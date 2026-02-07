@@ -16,9 +16,64 @@
   </head>
 
   <body>
-    <!------------------------------>
     <!-- Your HTML Layout go here -->
+    <style>
+      main {
+        height: 700px;
+        width: 100%;
+        background-color: #f9efd2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
+      .welcome-box {
+        width: 70%;
+        height: 70%;
+        border-radius: 8px;
+        border: black 2px solid;
+        background-color: #fff;
+      }
+
+      .welcome-image {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0px 8px 0px 0px #0000001f;
+      }
+
+      .hero-top {
+        height: 80%;
+        width: 100%;
+
+        display: flex;
+        gap: 10%;
+        padding: 20px;
+        align-items: center;
+      }
+
+      .hero-bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cta-button {
+        background-color: #ffc107;
+        border-radius: 8px;
+        height: 100%;
+        width: 60%;
+        margin-top: 2%;
+      }
+
+      .cta-button:hover {
+        cursor: pointer;
+      }
+
+      .cta-button:active {
+        background-color: #ffffff;
+      }
+    </style>
     <!-- START OF NAVBAR -->
     <!-- NAVBAR COLOUR -->
     <nav class="navbar navbar-expand-lg bg-warning">
@@ -102,7 +157,22 @@
 
     <!------------------------------>
 
-    <!-- Stuff for body goes here -->
+    <main id="hero-section">
+      <div class="welcome-box">
+        <div class="hero-top">
+          <img class="welcome-image" src="/images/lively-bar.png" />
+          <span class="hero-text">
+            <h1>
+              <strong>Welcome to Sports Connection!</strong> Your one stop place
+              for connecting with others that love sports as much as you do!
+            </h1>
+          </span>
+        </div>
+        <div class="hero-bottom">
+          <button class="cta-button"><h3>Connect today!</h3></button>
+        </div>
+      </div>
+    </main>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
