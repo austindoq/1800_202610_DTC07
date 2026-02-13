@@ -14,125 +14,109 @@
       rel="stylesheet"
     /> -->
     <!-- Tailwind -->
-      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-      <!-- CSS Stylesheet -->
-      <link rel="stylesheet" href="/styles/style.css">
-      <style>
-      main {
-        height: 700px;
-        width: 100%;
-        background-color: #f9efd2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
 
-      .welcome-box {
-        width: 70%;
-        height: 70%;
-        border-radius: 8px;
-        border: black 2px solid;
-        background-color: #fff;
-      }
+  <!-- START OF NAVBAR -->
+  <!-- NAVBAR COLOUR -->
+  <nav class="sticky top-0 z-50 bg-yellow-400 p-2">
+    <!-- Navbar - container -->
+    <div class="flex space-x-4 items-center">
+      <!-- Navbar - Branding -->
+      <a class="font-bold ml-6">Sports Connection App</a>
+      <!-- Navbar-links -->
 
-      .welcome-image {
-        height: 100%;
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: 0px 8px 0px 0px #0000001f;
-      }
+      <!-- link 1 -->
+      <a class="md:block hidden" href="#">In-Person</a>
+      <!-- link 2 -->
+      <a class="md:block hidden" href="#">Virtual</a>
+      <!-- End of Links -->
 
-      .hero-top {
-        height: 80%;
-        width: 100%;
-
-        display: flex;
-        gap: 10%;
-        padding: 20px;
-        align-items: center;
-      }
-
-      .hero-bottom {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .cta-button {
-        background-color: #ffc107;
-        border-radius: 8px;
-        height: 100%;
-        width: 60%;
-        margin-top: 2%;
-      }
-
-      .cta-button:hover {
-        cursor: pointer;
-      }
-
-      .cta-button:active {
-        background-color: #ffffff;
-      }
-      </style>
-    </head>
-
-    <!-- START OF NAVBAR -->
-    <!-- NAVBAR COLOUR -->
-    <nav class="sticky top-0 bg-yellow-400 p-2">
-      <!-- Navbar - container -->
-      <div class="flex space-x-4 items-center">
-        <!-- Navbar - Branding -->
-        <a class="font-bold ml-6">Sports Connection App</a>
-          <!-- Navbar-links -->
-          
-          <!-- link 1 -->
-          <a class="md:block hidden" href="#">In-Person</a>
-          <!-- link 2 -->
-          <a class="md:block hidden" href="#">Virtual</a>
-          <!-- End of Links -->
-
-          <!-- NAV - SEARCH BAR -->
-          <div class="relative mx-auto md:mx-0">
-            <input type="search" placeholder="search" class="bg-white px-3 rounded-full outline-none">
-            <button type="submit" class="absolute right-0 top-0 mt-1 mr-2">
-              <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-              <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-              </svg>
-            </button>
-          </div>
-          <!-- END OF NAV - SEARCH BAR -->
-
-          <!-- PROFILE -->
-          <div class="md:ml-auto mr-6">
-          <a class="flex items-center min-h-12 min-w-12">
-            <img src="/images/Profile.svg" width="50" height="50"></a>
-          </div>
-          <!-- END OF PROFILE -->
+      <!-- NAV - SEARCH BAR -->
+      <div class="relative mx-auto md:mx-0">
+        <input
+          type="search"
+          placeholder="search"
+          class="bg-white px-3 rounded-full outline-none"
+        />
+        <button type="submit" class="absolute right-0 top-0 mt-1 mr-2">
+          <svg
+            class="h-4 w-4 fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            id="Capa_1"
+            x="0px"
+            y="0px"
+            viewBox="0 0 56.966 56.966"
+            style="enable-background: new 0 0 56.966 56.966"
+            xml:space="preserve"
+            width="512px"
+            height="512px"
+          >
+            <path
+              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+            />
+          </svg>
+        </button>
       </div>
-    </nav>
-    <!-- END OF NAVBAR -->
+      <!-- END OF NAV - SEARCH BAR -->
 
-
+      <!-- PROFILE -->
+      <div class="md:ml-auto mr-6">
+        <a class="flex items-center min-h-12 min-w-12">
+          <img src="/images/Profile.svg" width="50" height="50"
+        /></a>
+      </div>
+      <!-- END OF PROFILE -->
+    </div>
+  </nav>
+  <!-- END OF NAVBAR -->
 
   <body>
-    
-
+    <!------------------------------>
+    <!-- HERO SECTION -->
     <!------------------------------>
 
-    <main id="hero-section">
-      <div class="welcome-box">
-        <div class="hero-top">
-          <img class="welcome-image" src="/images/lively-bar.png" />
-          <span class="hero-text">
-            <h1>
-              <strong>Welcome to Sports Connection!</strong> Your one stop place
-              for connecting with others that love sports as much as you do!
-            </h1>
-          </span>
+    <main class="min-h-screen">
+      <div
+        class="hero-section bg-yellow-100 flex flex-col justify-center py-20"
+      >
+        <div
+          id="hero-center"
+          class="flex justify-between items-center px-6 md:px-20"
+        >
+          <img
+            class="rounded-full max-w-md h-auto hidden xl:block drop-shadow-xl"
+            src="/images/lively-bar.png"
+          />
+          <div class="flex justify-center flex-col items-center gap-7 p-5">
+            <span
+              id="hero-text"
+              class="flex flex-col items-center text-center justify-center gap-4"
+            >
+              <h1 class="text-7xl">
+                <strong>Welcome to TeamUp!</strong>
+              </h1>
+              <h2 class="text-2xl">
+                Your one stop place for connecting with others that love sports
+                as much as you do!
+              </h2>
+            </span>
+            <button
+              class="bg-yellow-400 rounded-lg p-3 text-4xl w-[60%] drop-shadow-xl"
+            >
+              <h3>Connect today!</h3>
+            </button>
+          </div>
+          <img
+            class="rounded-full max-w-md h-auto hidden xl:block drop-shadow-xl"
+            src="/images/soccer-img-portrait.png"
+          />
         </div>
-        <div class="hero-bottom">
-          <button class="cta-button"><h3>Connect today!</h3></button>
-        </div>
+        <div id="CTA" class="flex w-full justify-center"></div>
       </div>
     </main>
 
@@ -146,7 +130,9 @@
   <!--START OF FOOTER-->
   <footer class="bg-zinc-500 py-8">
     <!-- container for links -->
-    <div class="flex justify-center space-x-6 text-white font-light tracking-wider">
+    <div
+      class="flex justify-center space-x-6 text-white font-light tracking-wider"
+    >
       <a href="#" class="hover:text-yellow-200">About</a>
       <a href="#" class="hover:text-yellow-200">Team</a>
       <a href="#" class="hover:text-yellow-200">Contact</a>
