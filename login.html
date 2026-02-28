@@ -78,35 +78,64 @@
   </nav>
   <!-- END OF NAVBAR -->
 
-<!-- START OF LOGIN FORM -->
-<div class="min-h-[80vh] flex items-center justify-center bg-[url(/images/fans-home-watch-party.svg)] bg-cover bg-center">
-  <!-- content -->
-  <div class="flex gap-6 mx-auto p-5">
-    <!-- form -->
-    <div class="flex flex-col gap-8 bg-white border-1 border-gray-200 p-8 rounded-lg shadow-xl">
-      <div class="border-b-1 border-gray-400">
-        <div class="text-5xl pt-2 pb-10 text-center font-semibold">Ready to <span class="text-gray-800">Team</span><span class="text-yellow-400">Up</span>?</div>
-      </div>
-      <div class="text-3xl font-bold text-center">Log in!</div>
-        <input type="Email" placeholder="Email" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1">
-        <input type="Password" placeholder="Password" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1">
-        <button class="flex space-x-3 mx-auto p-4 items-center bg-yellow-400 rounded-lg">
-          <a class="flex gap-2" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-              <title xmlns="">login</title>
-              <path fill="currentColor" d="M26 30H14a2 2 0 0 1-2-2v-3h2v3h12V4H14v3h-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2"/>
-              <path fill="currentColor" d="M14.59 20.59L18.17 17H4v-2h14.17l-3.58-3.59L16 10l6 6l-6 6z"/>
-              </svg>
-              <span class="text-2xl">Login.</span>
-          </a>
-        </button>
-        <div class="font-semibold text-lg">Don't have an account yet? <span class="font-bold text-yellow-500 pl-2"><a href="#">Sign up</a></span> today!</div>
+  <!-- Alert -->
+  <div id="authAlert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"></div>
+
+  <!-- START OF LOGIN FORM -->
+  <div id="loginView" class="min-h-[80vh] flex items-center justify-center bg-[url(/images/fans-home-watch-party.svg)] bg-cover bg-center">
+    <!-- content -->
+    <div class="flex gap-6 mx-auto p-5">
+      <!-- form -->
+      <form id="loginForm" novalidate class="flex flex-col gap-8 bg-white border-1 border-gray-200 p-8 rounded-lg shadow-xl">
+        <div class="border-b-1 border-gray-400">
+          <div class="text-5xl pt-2 pb-10 text-center font-semibold">Ready to <span class="text-gray-800">Team</span><span class="text-yellow-400">Up</span>?</div>
+        </div>
+        <div class="text-3xl font-bold text-center">Log in!</div>
+          <input type="Email"  id="loginEmail" placeholder="Email" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1" required>
+          <input type="Password" id="loginPassword" placeholder="Password" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1" required>
+          <button type="submit" class="flex space-x-3 mx-auto p-4 items-center bg-yellow-400 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title xmlns="">login</title>
+                <path fill="currentColor" d="M26 30H14a2 2 0 0 1-2-2v-3h2v3h12V4H14v3h-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2"/>
+                <path fill="currentColor" d="M14.59 20.59L18.17 17H4v-2h14.17l-3.58-3.59L16 10l6 6l-6 6z"/>
+                </svg>
+                <span class="text-2xl">Login.</span>
+          </button>
+          <div class="font-semibold text-lg">Don't have an account yet? <span class="font-bold text-yellow-500 pl-2"><a href="#" id="toSignup">Sign up</a></span> today!</div>
+      </form>
     </div>
+
   </div>
 
-</div>
+  <!-- START OF SIGNUP FORM -->
+  <div id="signupView" class="hidden min-h-[80vh] items-center justify-center bg-[url(/images/fans-home-watch-party.svg)] bg-cover bg-center">
+    <!-- content -->
+    <div class="flex gap-6 mx-auto p-5">
+      <!-- form -->
+      <form id="signupForm" class="flex flex-col gap-8 bg-white border-1 border-gray-200 p-8 rounded-lg shadow-xl">
+        <div class="border-b-1 border-gray-400">
+          <div class="text-5xl pt-2 pb-10 text-center font-semibold">Ready to <span class="text-gray-800">Team</span><span class="text-yellow-400">Up</span>?</div>
+        </div>
+        <div class="text-3xl font-bold text-center">Sign up!</div>
+          <input type="text" id="signupName" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1" placeholder="Name" aria-label="Full name" required />
+          
+          <input type="Email" id="signupEmail" placeholder="Email" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1" required>
+          <input type="Password" id="signupPassword" placeholder="Password" class="bg-white px-4 py-2 rounded-full border-gray-300 border-1" required>
+          <button type="submit" class="flex space-x-3 mx-auto p-4 items-center bg-yellow-400 rounded-lg">
+            
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title xmlns="">login</title>
+                <path fill="currentColor" d="M26 30H14a2 2 0 0 1-2-2v-3h2v3h12V4H14v3h-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2"/>
+                <path fill="currentColor" d="M14.59 20.59L18.17 17H4v-2h14.17l-3.58-3.59L16 10l6 6l-6 6z"/>
+                </svg>
+                <span class="text-2xl">Login.</span>
+            
+          </button>
+          <div class="font-semibold text-lg">Already have an account? <span class="font-bold text-yellow-500 pl-2"><a href="#" id="toLogin">Log in!</a></span></div>
+      </form>
+    </div>
 
-
+  </div>
 
   <!--START OF FOOTER-->
   <footer class="bg-zinc-500 py-8">
@@ -125,6 +154,13 @@
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <!-- Link to scripts of your own -->
-    <script type="module" src="./src/main.js"></script>
+    <!-- <script type="module" src="./src/main.js"></script> -->
+
+    <!-- Firebase and authentication related scripts -->
+    <!-- The order of loading matters -->
+    <script type="module" src="/src/firebaseConfig.js"></script>
+    <script type="module" src="/src/authentication.js"></script>
+    <script type="module" src="/src/loginSignup.js"></script>
   </body>
+
 </html>
