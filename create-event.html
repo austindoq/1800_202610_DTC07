@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>DTC07 - 1800 PROJECT</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Other libraries go here -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    /> -->
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <div class="sticky top-0 z-50">
+      <!-- START OF MAIN NAVBAR -->
+      <!-- NAVBAR COLOUR -->
+      <nav class=" bg-gray-400 p-2">
+        <!-- Navbar - container -->
+        <div class="flex space-x-4 items-center">
+          <!-- Navbar - Branding -->
+          <a href="/index.html" class="font-bold ml-6">
+            <img src="/images/transparent-logo.svg" width="70" height="70">
+          </a>
+            <!-- Navbar-links -->
+      
+            <!-- link 1 -->
+            <a class="sm:block hidden" href="#">In-Person</a>
+            <!-- link 2 -->
+            <a class="sm:block hidden" href="#">Virtual</a>
+            <!-- End of Links -->
+            <!-- NAV - SEARCH BAR -->
+            <div class="relative mx-auto sm:mx-0">
+              <input type="search" placeholder="search" class="bg-white px-3 rounded-full outline-none">
+              <button type="submit" class="absolute right-0 top-0 mt-1 mr-2">
+                <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
+                <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
+                </svg>
+              </button>
+            </div>
+            <!-- END OF NAV - SEARCH BAR -->
+            <!-- PROFILE -->
+            <div class="sm:ml-auto mr-6 pl-6">
+            <a href="/profile.html" class="flex items-center min-h-12 min-w-12">
+              <img src="/images/Profile.svg" width="50" height="50"></a>
+            </div>
+            <!-- END OF PROFILE -->
+        </div>
+      </nav>
+      <!-- END OF MAIN NAVBAR -->
+      
+      <!-- Start of Mobile Navbar -->
+      <div class="flex justify-evenly bg-gray-400 p-2 sm:hidden">
+        <!-- Link 1 -->
+        <div>
+          In-Person
+        </div>
+        <!-- Link 2 -->
+        <div>
+          Virtual
+        </div>
+      </div>
+      <!-- END OF NAV - SEARCH BAR -->
+
+      <!-- PROFILE -->
+
+      <!-- END OF PROFILE -->
+    </div>
+  </nav>
+  <!-- END OF NAVBAR -->
+
+    <main class="min-h-screen flex flex-col justify-between">
+      <!-- EVENT CREATION CONTENT AREA -->
+      <div class="max-w-7xl md:w-full m-auto flex flex-col gap-4 mt-10">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-5xl font-bold">Create an Event</h1>
+          <p class="text-slate-500 text-xl">Here you can build out your event for others to join</p>
+        </div>
+        <form class="border border-slate-600 rounded-md p-4 flex flex-col gap-4 shadow-xl">
+          <div id="top-create-section" class="flex gap-4">
+            <!-- TOP LEFT -->
+            <div class="w-full md:w-1/3 flex flex-col gap-4">
+              <img id="event-image" src="/images/elmo.jpg" class="rounded-lg shadow-xl">  
+              <div class="flex justify-center">
+                <label for="event-image-upload" class="text-xl p-2 bg-[#eab308] rounded-xl m-auto shadow-xl hover:cursor-pointer active:bg-[#fde047]">Upload an Event Image</label>
+                <input type="file" id="event-image-upload" accept="png jpg jpeg" class="hidden">                                        
+              </div>               
+            </div>
+            <!-- TOP RIGHT MEDIUM AND LARGER-->
+            <div class="hidden w-2/3 md:flex justify-evenly">
+              <div id="top-input-headings" class="flex flex-col justify-evenly w-1/3 text-3xl font-semibold ">
+                <h1>Event Title<span class="text-red-600">*</span></h1>
+                <h1>Location<span class="text-red-600">*</span></h1>
+                <h1>Time<span class="text-red-600">*</span></h1>
+                <h1>Restrictions</h1>
+              </div>
+              <div id="top-input-fields" class="w-2/3 text-2xl flex flex-col justify-evenly">
+                <input id="event-title" name="event-title" placeholder="Event Title" type="text" required  class="border border-slate-400 rounded-md p-2">
+                <input id="event-location" name="event-location" type="text" placeholder="Location" required class="border border-slate-400 rounded-md p-2">
+                <input id="event-date" name="event-date" type="date" required>
+                <input id="event-restriction" name="event-restriction" type="text" placeholder="List any restrictions" class="border border-slate-400 rounded-md p-2">
+              </div>   
+            </div>                                                        
+          </div>
+          <!-- TOP RIGHT SMALL  -->
+          <div class="flex flex-col gap-2 md:hidden">
+            <div class="flex flex-col gap-2">
+              <h1 class="text-3xl font-semibold" >Event Title<span class="text-red-600">*</span></h1>
+              <input id="event-title" name="event-title" placeholder="Event Title" type="text" required  class="border border-slate-400 rounded-md p-2 text-2xl">
+            </div>
+            <div class="flex flex-col gap-2">
+              <h1 class="text-3xl font-semibold">Location<span class="text-red-600">*</span></h1>
+              <input id="event-location" name="event-location" type="text" placeholder="Location" required class="border border-slate-400 rounded-md p-2 text-2xl">
+            </div>
+            <div class="flex flex-col gap-2 ">
+              <h1 class="text-3xl font-semibold">Time<span class="text-red-600">*</span></h1>
+              <input id="event-date" name="event-date" type="date" required class="text-2xl">
+            </div>
+            <div class="flex flex-col gap-2">
+              <h1 class="text-3xl font-semibold">Restrictions</h1>
+              <input id="event-restriction" name="event-restriction" type="text" placeholder="List any restrictions" class="border border-slate-400 rounded-md p-2 text-2xl">
+            </div>
+          </div>
+          <!-- BOTTOM -->
+          <div id="bottom-create-section" class="flex flex-col gap-2">
+            <h1 class="text-3xl font-bold">Event Description</h1>
+            <textarea id="event-description" name="event-description" required placeholder="Write a description for your event." class="w-full rounded-md border border-slate-400 resize-none text-xl p-2" rows="5"></textarea>
+          </div> 
+          <!--FORM SUBMIT-->
+          <div class="w-full text-center font-semibold tracking-wider text-2xl p-2 bg-[#eab308] rounded-xl m-auto shadow-xl hover:cursor-pointer active:bg-[#fde047]">
+            <input type="submit" value="Create Event">
+          </div>
+        </form>
+      </div>
+      <!-- ABOVE FOOTER DECORATION -->
+      <div class="flex justify-between">
+        <img src="/images/soccer-png1.png"  width="130px">
+        <img src="/images/soccer-png2.png" width="130px">
+        <img src="/images/soccer-png3.png" width="130px">
+      </div>      
+    </main>
+
+  <!--START OF FOOTER-->
+  <footer class="bg-zinc-500 py-8">
+    <!-- container for links -->
+    <div
+      class="flex justify-center space-x-6 text-white font-light tracking-wider"
+    >
+      <a href="#" class="hover:text-yellow-200">About</a>
+      <a href="#" class="hover:text-yellow-200">Team</a>
+      <a href="#" class="hover:text-yellow-200">Contact</a>
+      <a href="#" class="hover:text-yellow-200">Terms</a>
+    </div>
+  </footer>
+  <!-- END OF FOOTER -->
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <!-- Link to scripts of your own -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
