@@ -100,12 +100,20 @@
                   <h1>Event Title<span class="text-red-600">*</span></h1>
                   <h1>Location<span class="text-red-600">*</span></h1>
                   <h1>Time<span class="text-red-600">*</span></h1>
+                  <h1>Age Group</h1>
                   <h1>Restrictions</h1>
                 </div>
                 <div id="top-input-fields" class="w-2/3 text-2xl flex flex-col justify-evenly gap-8">
                   <input id="event-title" name="event-title" placeholder="Event Title" type="text" required  class="border border-slate-400 rounded-md p-2">
                   <input id="event-location" name="event-location" type="text" placeholder="Location" required class="border border-slate-400 rounded-md p-2">
-                  <input id="event-date" name="event-date" type="date" required>
+                  <input id="event-date" name="event-date" type="date" required class="w-fit mb-4">
+                  <select id="event-age-group-select"  name="event-age-group" class="w-fit mb-2">
+                    <option value="any-age-group">Any</option>
+                    <option value="18-25">18-25</option>
+                    <option value="25-35">25-35</option>
+                    <option value="35-55">35-55</option>
+                    <option value="55-plus">55+</option>
+                  </select>
                   <input id="event-restriction" name="event-restriction" type="text" placeholder="List any restrictions" class="border border-slate-400 rounded-md p-2">
                 </div>   
               </div>
@@ -151,7 +159,17 @@
               </div>
               <div class="flex flex-col gap-2 ">
                 <h1 class="text-3xl font-semibold">Time<span class="text-red-600">*</span></h1>
-                <input id="event-date" name="event-date" type="date" required class="text-2xl">
+                <input id="event-date" name="event-date" type="date" required class="text-2xl w-fit">
+              </div>
+              <div class="flex flex-col gap-2">
+                <h1 class="text-3xl font-semibold">Age Group</h1>
+                <select id="event-age-group-select" name="event-age-group" class="text-2xl w-fit">
+                  <option value="any-age-group">Any</option>
+                  <option value="18-25">18-25</option>
+                  <option value="25-35">25-35</option>
+                  <option value="35-55">35-55</option>
+                  <option value="55-plus">55+</option>
+                </select>
               </div>
               <div class="flex flex-col gap-2">
                 <h1 class="text-3xl font-semibold">Restrictions</h1>
@@ -181,9 +199,9 @@
                 </div>
               </div>
             </div>  
-          </div>
-          <!-- BOTTOM -->
-          <div id="bottom-create-section" class="flex flex-col gap-2">
+          </div>      
+          <!-- EVENT CREATE BOTTOM -->
+          <div id="bottom-create-section" class="flex flex-col gap-2 mt-2">
             <h1 class="text-3xl font-bold">Event Description</h1>
             <textarea id="event-description" name="event-description" required placeholder="Write a description for your event." class="w-full rounded-md border border-slate-400 resize-none text-xl p-2" rows="5"></textarea>
           </div> 
