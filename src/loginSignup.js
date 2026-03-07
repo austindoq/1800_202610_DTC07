@@ -83,7 +83,7 @@ function initAuthUI() {
             document.querySelector("#loginEmail")?.value?.trim() ?? "";
         const password = document.querySelector("#loginPassword")?.value ?? "";
         if (!email || !password) {
-            
+
             showError("Please enter your email and password.");
             return;
         }
@@ -104,16 +104,17 @@ function initAuthUI() {
         e.preventDefault();
         hideError();
         const name = document.querySelector("#signupName")?.value?.trim() ?? "";
-        const email =
-            document.querySelector("#signupEmail")?.value?.trim() ?? "";
+        const username = document.querySelector("#user-username")?.value?.trim() ?? "";
+        const age = document.querySelector("#user-age")?.value?.trim() ?? "";
+        const email = document.querySelector("#signupEmail")?.value?.trim() ?? "";
         const password = document.querySelector("#signupPassword")?.value ?? "";
         if (!name || !email || !password) {
-            showError("Please fill in name, email, and password.");
+            showError("Please fill in required fields: name, username, age, email, and password.");
             return;
         }
         setSubmitDisabled(signupForm, true);
         try {
-            await signupUser(name, email, password);
+            await signupUser(name, username, age, email, password);
             location.href = redirectUrl;
         } catch (err) {
             showError(authErrorMessage(err));

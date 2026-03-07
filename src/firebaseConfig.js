@@ -41,4 +41,6 @@ const app = initializeApp(firebaseConfig);
 // You can import "auth" anywhere to perform login, signup,
 // or signout operations (that's why we export it).
 // ---------------------------------------------------------
-export const auth = getAuth(app);
+export const auth = getAuth(app); //initializes and exports auth service
+import { getFirestore } from "firebase/firestore";
+export const db = getFirestore(app); //creating and exporting and db constant by calling getFireStoreapp. Initialize database here
