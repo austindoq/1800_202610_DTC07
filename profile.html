@@ -19,42 +19,80 @@
     <!-- Web components for shared navbar and footer layout -->
     <script type="module" src="src\components\site-footer.js"></script>
     <script type="module" src="src\components\site-navbar.js"></script>
-
   </head>
   <body>
     <!-- NAVBAR -->
     <site-navbar></site-navbar>
 
-    <main class="min-h-screen  m-auto flex flex-col justify-between ">
+    <main class="min-h-screen m-auto flex flex-col justify-between">
       <!-- Profile Content Area -->
       <div class="max-w-6xl m-auto p-10">
         <div class="flex flex-col gap-2">
           <h1 class="text-5xl font-bold">Profile Settings</h1>
-          <p class="text-slate-500 text-xl">This information will appear on your public profile</p>
+          <p class="text-slate-500 text-xl">
+            This information will appear on your public profile
+          </p>
         </div>
         <!-- USER INPUT AREA -->
-        <section class="flex p-12 items-center gap-8 flex-col md:flex-row justify-evenly">
+        <section
+          class="flex p-12 items-center gap-8 flex-col md:flex-row justify-evenly"
+        >
           <!-- LEFT SIDE OF SETTINGS -->
-          <div id="setting-left" class="max-w-1/3">
-            <img src="./images/Profile.svg" class='rounded-full h-auto w-2/3 shadow-xl hover:cursor-pointer'>
+          <div
+            id="setting-left"
+            class="max-w-1/3 flex flex-col gap-4 items-center"
+          >
+            <img
+              src="./images/Profile.svg"
+              class="rounded-full h-auto w-2/3 shadow-xl"
+            />
+            <div class="flex justify-center">
+              <label
+                for="profile-image-upload"
+                class="text-xl p-2 bg-[#eab308] rounded-xl m-auto shadow-xl text-center hover:cursor-pointer active:bg-[#fde047]"
+                >Change Profile Picture</label
+              >
+              <input
+                type="file"
+                id="profile-image-upload"
+                accept="png jpg jpeg"
+                class="hidden"
+              />
+            </div>
           </div>
           <!-- RIGHT SIDE OF SETTINGS -->
-          <form id="settings-right" class=" max-w-2/3 border border-slate-500 w-full rounded-xl p-10 shadow-xl flex flex-col gap-6">
+          <form
+            id="settings-right"
+            class="max-w-2/3 border border-slate-500 w-full rounded-xl p-10 shadow-xl flex flex-col gap-6"
+          >
             <div id="profile-option-1" class="flex flex-col gap-2">
               <h1 class="text-3xl font-semibold">Username</h1>
-              <p id="username" placeholder="Steve Sports" name="username"  class="text-2xl break-all">@messifan79</p>
+              <p
+                id="user-name"
+                placeholder="Steve Sports"
+                name="username"
+                class="text-2xl break-all"
+              ></p>
             </div>
             <div id="profile-option-1" class="flex flex-col gap-2">
               <h1 class="text-3xl font-semibold">Email</h1>
-              <p id="user-email" placeholder="Steve Sports" name="user-email"  class="text-2xl break-all">stevesports@gmail.com</p>
+              <p
+                id="user-email"
+                placeholder="your@email.com"
+                name="user-email"
+                class="text-2xl break-all"
+              ></p>
             </div>
             <div id="profile-option-2" class="flex flex-col gap-2">
               <h1 class="text-3xl font-semibold">Age</h1>
-              <p id="user-age" class="text-2xl">45</p>
+              <p id="user-age" class="text-2xl"></p>
             </div>
-            <div id="profile-option-3" class="flex flex-col gap-2 ">
+            <div id="profile-option-3" class="flex flex-col gap-2">
               <h1 class="text-3xl font-semibold">Language</h1>
-              <select id="user-language" class="text-2xl border border-slate-500 rounded-xl p-2 hover:cursor-pointer">
+              <select
+                id="user-language"
+                class="text-2xl border border-slate-500 rounded-xl p-2 hover:cursor-pointer"
+              >
                 <option value="english">English</option>
                 <option value="french">French</option>
                 <option value="mandarin">Mandarin</option>
@@ -65,7 +103,7 @@
             <div id="profile-option-4" class="flex flex-col gap-2">
               <h1 class="text-3xl font-semibold">Location</h1>
               <div class="flex gap-4 items-center">
-                <p id="user-location" class="p-2 text-2xl">Vancouver, BC</p>           
+                <p id="user-location" class="p-2 text-2xl">Vancouver, BC</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
@@ -73,28 +111,29 @@
                   viewBox="0 0 24 24"
                   fill="#eab308"
                 >
-                  <path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" />
+                  <path
+                    d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z"
+                  />
                 </svg>
-
               </div>
             </div>
-            </form>
+          </form>
         </section>
       </div>
       <!-- ABOVE FOOTER DECORATION PNGS -->
       <div class="flex justify-between">
-        <img src="/images/soccer-png1.png"  width="130px">
-        <img src="/images/soccer-png2.png" width="130px">
-        <img src="/images/soccer-png3.png" width="130px">
+        <img src="/images/soccer-png1.png" width="130px" />
+        <img src="/images/soccer-png2.png" width="130px" />
+        <img src="/images/soccer-png3.png" width="130px" />
       </div>
     </main>
 
-  <!--START OF FOOTER-->
-  <site-footer></site-footer>
+    <!--START OF FOOTER-->
+    <site-footer></site-footer>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <!-- Link to scripts of your own -->
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/profile.js"></script>
   </body>
 </html>
