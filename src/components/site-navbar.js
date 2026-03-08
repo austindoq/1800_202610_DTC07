@@ -10,7 +10,7 @@ class SiteNavbar extends HTMLElement {
                     <div class="flex space-x-3 md:space-x-6 items-center">
                         <!-- Navbar - Branding -->
                         <a href="/index.html" class="font-bold ml-6 min-w-12">
-                        <img src="/images/transparent-logo.svg" width="70" height="70">
+                        <img src="/images/logo-yellow-with-motif.png" width="64" height="64">
                         </a>
                         <!-- Navbar-links -->
                         <!-- link 1 -->
