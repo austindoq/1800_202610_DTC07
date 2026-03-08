@@ -28,47 +28,45 @@
     <!------------------------------>
 
     <main class="">
-      <div
-        class="hero-section bg-yellow-100 flex flex-col justify-center py-20"
-      >
-        <div
-          id="hero-center"
-          class="flex justify-between items-center px-6 md:px-20"
-        >
-          <img
-            class="rounded-full max-w-md h-auto hidden xl:block drop-shadow-xl"
-            src="/images/lively-bar.png"
-          />
+      <div class="hero-section flex flex-col max-w-6xl mx-auto justify-center py-12">
+        <div id="hero-center" class="flex justify-between items-center">
+
+          <!-- left -->
+          <img src="/images/vertical-side-banner1.png">
+          <!-- middle -->
           <div class="flex justify-center flex-col items-center gap-7 p-5">
             <span
               id="hero-text"
               class="flex flex-col items-center text-center justify-center gap-4"
             >
-              <h1 class="text-7xl">
+              <h1 class="text-5xl">
                 <strong>Welcome to TeamUp!</strong>
               </h1>
-              <h2 class="text-2xl">
-                Your one stop place for connecting with others that love sports
-                as much as you do!
-              </h2>
+              <h2 class="text-2xl font-semibold">The Sports Community Platform.</h2>
+              <h2 class="text-2xl font-semibold">Where you can cheer for a team with a team.</h2>
             </span>
             <button
-              class="bg-yellow-400 rounded-lg p-3 text-4xl w-[60%] drop-shadow-xl hover:cursor-pointer active:bg-[#fde047]"
+              class="bg-yellow-400 rounded-full p-3 text-xl drop-shadow-xl hover:cursor-pointer active:bg-[#fde047]"
             >
-              <h3>Connect today!</h3>
+              <h3>Get Started</h3>
             </button>
           </div>
-          <img
-            class="rounded-full max-w-md h-auto hidden xl:block drop-shadow-xl"
-            src="/images/soccer-img-portrait.png"
-          />
+          <!-- right -->
+          <img src="/images/vertical-side-banner2.png" alt="">
         </div>
         <div id="CTA" class="flex w-full justify-center"></div>
       </div>
     </main>
 
+  <!-- something FIFA related -->
+  <div class="bg-green-800 text-center text-white py-1">
+    <a href="#">
+      <p>FIFA World Cup 2026 is here! See community related events</p>
+    </a>
+  </div>
+
   <!-- CARDS SECTION -->
-  <div class="lg:max-w-6xl md:max-w-4xl  max-w-2xl mx-auto my-24 px-5">
+  <div class="lg:max-w-6xl md:max-w-4xl  max-w-2xl mx-auto my-12 px-5">
     <!-- CREATE EVENT BUTTON -->
     <div class="flex justify-end">
       <a href="/create-event.html">
@@ -91,7 +89,10 @@
       </a>
     </div>
     <!-- In-Person Events -->
-    <div class="text-5xl py-8 md:text-start text-center">Local Events</div>
+    <div class="flex justify-between text-5xl py-8 md:text-start items-end">
+      Local Events
+      <button id="local-events-see-all-btn" class="text-sm font-semibold bg-[#282828] text-white p-2 rounded-full">See all events</button>
+      </div>
     <div class="grid lg:grid-cols-3 lg:grid-row-2 md:grid-cols-2 md:grid-row-3 gap-4 justify-center items-center">
       <!-- cards -->
       <div>
@@ -170,7 +171,10 @@
     </div>
 
     <!-- Online Events -->
-    <div class="text-5xl py-8 my-8 md:text-start text-center">Online Events</div>
+    <div class="flex justify-between text-5xl py-8 my-8 md:text-start items-end">
+      Online Events
+      <button id="online-events-see-all-btn" class="text-sm font-semibold bg-[#282828] text-white p-2 rounded-full">See all events</button>
+      </div>
     <div class="grid lg:grid-cols-3 lg:grid-row-2 md:grid-cols-2 md:grid-row-3 gap-4 justify-center items-center">
       <!-- cards -->
       <div>
@@ -248,6 +252,8 @@
       
     </div>
   </div>
+
+  <!--  -->
 
   <!--START OF FOOTER-->
   <site-footer></site-footer>

@@ -25,25 +25,34 @@
     <site-navbar></site-navbar>
 
     <!-- START OF MAIN BANNER -->
-        <main class="">
-      <div class="hero-section bg-yellow-100 flex flex-col justify-center py-20">
+    <main class="">
+      <div class="hero-section flex flex-col max-w-6xl mx-auto justify-center py-12">
+        <div id="hero-center" class="flex justify-between items-center">
+
+          <!-- left -->
+          <img src="/images/vertical-side-banner1.png">
+          <!-- middle -->
           <div class="flex justify-center flex-col items-center gap-7 p-5">
             <span
               id="hero-text"
               class="flex flex-col items-center text-center justify-center gap-4"
             >
-              <h1 class="text-7xl">
+              <h1 class="text-5xl">
                 <strong>Welcome <span id="user-name"></span> to TeamUp!</strong>
               </h1>
-              <h2 class="text-2xl">
-                Your one stop place for connecting with others that love sports
-                as much as you do!
-              </h2>
+              <h2 class="text-2xl font-semibold">The Sports Community Platform.</h2>
+              <h2 class="text-2xl font-semibold">Where you can cheer for a team with a team.</h2>
             </span>
             <button
-              class="bg-yellow-400 rounded-lg p-3 text-4xl w-[60%] drop-shadow-xl">
-              <h3>Search For Your Team!</h3>
+              class="bg-yellow-400 rounded-full p-3 text-xl drop-shadow-xl hover:cursor-pointer active:bg-[#fde047]"
+            >
+              <h3>Get Started</h3>
             </button>
+          </div>
+          <!-- right -->
+          <img src="/images/vertical-side-banner2.png" alt="">
+        </div>
+        <div id="CTA" class="flex w-full justify-center"></div>
       </div>
     </main>
     <!-- END OF MAIN BANNER -->
