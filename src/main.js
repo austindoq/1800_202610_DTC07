@@ -1,12 +1,6 @@
 import { onAuthReady } from "./authentication.js";
 import { db } from "./firebaseConfig.js";
-import { doc, onSnapshot, getDoc } from "firebase/firestore";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, onSnapshot, getDoc, collection, getDocs, addDoc, serverTimestamp, } from "firebase/firestore";
 
 // Function to fetch the signed-in user's name and display it in the UI
 function showName() {
@@ -38,4 +32,7 @@ function showName() {
   });
 }
 
+
+
 showName();
+
