@@ -1,3 +1,6 @@
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+
 class SiteNavbar extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -60,13 +63,13 @@ class SiteNavbar extends HTMLElement {
                         <!-- Right Container -->
                         <div class="flex justify-end items-center">
                         <!-- login button -->
-                        <a href="/login.html" class="hidden lg:block">
+                        <a id ="login-logout-button" href="/login.html" class="hidden lg:block">
                             <div class="bg-[#282828] text-white py-2 px-3 rounded-full hover:text-yellow-400">
                             Log in
                             </div>
                         </a>
                         <!-- PROFILE -->
-                        <div class="flex ml-auto mr-6 pl-6">
+                        <div id="profile-icon" class="flex ml-auto mr-6 pl-6">
                         <a href="/profile.html" class="flex items-center min-h-12 min-w-12">
                             <img src="/images/Profile.svg" width="50" height="50"></a>
                         </div>
@@ -94,7 +97,43 @@ class SiteNavbar extends HTMLElement {
             </nav>
             <!-- END OF NAVBAR -->
         `;
+
+        onAuthStateChanged(auth, (user) => {
+            //we run auth check after innerHTML is set so the profile element exists first
+            const profileIcon = this.querySelector("#profile-icon");
+            if (profileIcon) {
+                profileIcon.style.display = user ? "flex" : "none";
+            }
+        });
     }
 }
+
+        // function updateLoginLogoutButton() {
+        //     onAuthStateChanged(auth, (user) => {
+        //         const loginLogoutButton = document.getElementById(
+        //             "login-logout-button",
+        //         );
+        //         if (!loginLogoutButton) {
+        //             return;
+        //         }
+
+        //         if (user) {
+        //             // user is logged in, so we need to show logout
+        //             loginLogoutButton.href = "#";
+        //             loginLogoutButton.querySelector("div").textContent =
+        //                 "Log out";
+        //             loginLogoutButton.addEventListener("click", (e) => {
+        //                 e.preventDefault();
+        //                 logoutUser();
+        //             });
+        //         } else {
+        //             // user is NOT logged in, so we need to show log in
+        //             loginLogoutButton.href = "/login.html";
+        //             loginLogoutButton.querySelector("div").textContent =
+        //                 "Log in";
+        //         }
+        //     });
+        // }
+
 
 customElements.define("site-navbar", SiteNavbar);
