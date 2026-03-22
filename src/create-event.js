@@ -30,6 +30,7 @@ onAuthStateChanged(auth, (user) => {
     e.preventDefault();
 
     const eventTitle = getInput("event-title-sm", "event-title");
+    const eventType = getInput("event-type-sm", "event-type");
     const eventLocation = getInput("event-location-sm", "event-location");
     const eventDate = getInput("event-date-sm", "event-date");
     const eventAgeGroup = getInput("event-age-group-sm", "event-age-group");
@@ -66,6 +67,7 @@ onAuthStateChanged(auth, (user) => {
       await addDoc(eventCollectionRef, {
         host: auth.currentUser.displayName,
         title: eventTitle,
+        type: eventType,
         location: eventLocation,
         time: eventDate,
         ageGroup: eventAgeGroup,

@@ -67,6 +67,7 @@
                   class="flex flex-col justify-evenly w-1/3 text-3xl font-semibold gap-8"
                 >
                   <h1>Event Title<span class="text-red-600">*</span></h1>
+                  <h1>Event Type<span class="text-red-600">*</span></h1>
                   <h1>Location<span class="text-red-600">*</span></h1>
                   <h1>Time<span class="text-red-600">*</span></h1>
                   <h1>Age Group</h1>
@@ -83,6 +84,11 @@
                     type="text"
                     class="border border-slate-400 rounded-md p-2"
                   />
+                  <select id="event-type" name="event-type" class="w-fit mb-2">
+                    <option value="local">In-Person</option>
+                    <option value="online">Online</option>
+                  </select>
+
                   <input
                     id="event-location"
                     name="event-location"
@@ -209,6 +215,19 @@
                   type="text"
                   class="border border-slate-400 rounded-md p-2 text-2xl"
                 />
+              </div>
+              <div class="flex flex-col gap-2">
+                <h1 class="text-3xl font-semibold">
+                  Event Type<span class="text-red-600">*</span>
+                </h1>
+                <select
+                  id="event-type-sm"
+                  name="event-type-sm"
+                  class="text-2xl w-fit"
+                >
+                  <option value="local">In-Person</option>
+                  <option value="online">Online</option>
+                </select>
               </div>
               <div class="flex flex-col gap-2">
                 <h1 class="text-3xl font-semibold">
