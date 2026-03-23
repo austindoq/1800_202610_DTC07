@@ -1,8 +1,8 @@
 import { db, auth } from "/src/firebaseConfig"; //Bring in firestore db
-import { addDoc, collection } from "firebase/firestore"; //Bring in read functions from firestore
+import { doc, getDoc, addDoc, collection } from "firebase/firestore"; //Bring in read functions from firestore
 import { onAuthStateChanged } from "firebase/auth"; //Bring in auth state
 
-// These 2 functions figure out which form element is visible on the page, either the small or medium/large layout, and take form/checkbox/textarea input
+// These 2 functions figure out which form element is visible on the page, either the small or medium/large layout, because I've created 2 different layouts in the HTML
 //This one is for input elements with text/date/select values
 function getInput(idSmall, idLarge) {
   const smallInput = document.getElementById(idSmall);
@@ -19,11 +19,17 @@ function getChecked(idSmall, idLarge) {
 }
 
 // Ensure user is logged in and have user's instance loaded
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (!user) {
     alert("You must be logged in to create an event!");
     return;
   }
+
+  //Get current user's username from Firebase
+  const userRef = doc(db, "users", user.uid);
+  const userDoc = await getDoc(userRef);
+  const userName = userDoc.data().username;
+
   //Take form data on submit action from submit button at bottom of form, validate all req'd fields are filled, create a Firebase Doc with that info
   const eventForm = document.getElementById("event-form");
   eventForm.addEventListener("submit", async (e) => {
@@ -65,7 +71,7 @@ onAuthStateChanged(auth, (user) => {
     try {
       const eventCollectionRef = collection(db, "events");
       await addDoc(eventCollectionRef, {
-        host: auth.currentUser.displayName,
+        host: userName,
         title: eventTitle,
         type: eventType,
         location: eventLocation,
@@ -79,7 +85,8 @@ onAuthStateChanged(auth, (user) => {
         noGluten: noGlutenRestriction,
         eventImage: "", //Placeholder until we have a database to store images
       });
-      console.log("Event added successfully!");
+      alert("Event added successfully!");
+      window.location.href = "./main.html";
     } catch (error) {
       console.log("Something went wrong adding this event to Firestore.");
       console.log(error);
