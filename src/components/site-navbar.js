@@ -63,7 +63,7 @@ class SiteNavbar extends HTMLElement {
                         <!-- Right Container -->
                         <div class="flex justify-end items-center">
                         <!-- login button -->
-                        <a id ="login-logout-button" href="/login.html" class="hidden lg:block">
+                        <a id ="login-logout-button" href="/login.html" class="hidden sm:block">
                             <div class="bg-[#282828] text-white py-2 px-3 rounded-full hover:text-yellow-400">
                             Log in
                             </div>
