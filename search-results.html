@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>DTC07 - 1800 PROJECT</title>
+        <meta name="comp1800 template" content="My 1800 App" />
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Other libraries go here -->
+
+        <!-- Tailwind -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <!-- CSS Stylesheet -->
+        <link rel="stylesheet" href="/styles/style.css" />
+
+        <!-- Web components for shared navbar and footer layout -->
+        <script type="module" src="src\components\site-footer.js"></script>
+        <script type="module" src="src\components\site-navbar.js"></script>
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <site-navbar></site-navbar>
+
+        <main class="max-w-4xl mx-auto px-5 py-10 min-h-screen">
+            <h1 class="text-4xl font-bold mb-2">Search Results</h1>
+            <p id="search-summary" class="text-slate-500 text-xl mb-8"></p>
+
+            <div id="results-list" class="grid lg:grid-cols-3 md:grid-cols-2 gap-4 justify-center items-center">
+            </div>
+        </main>
+
+        <!--START OF FOOTER-->
+        <site-footer></site-footer>
+        <!-- END OF FOOTER -->
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <!-- Link to scripts of your own -->
+        <script type="module" src="./src/main.js"></script>
+        <script type="module" src="./src/search.js"></script>
+        <script type="module" src="./src/searchResults.js"></script>
+    </body>
+</html>
