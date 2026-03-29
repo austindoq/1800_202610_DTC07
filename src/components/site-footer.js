@@ -7,25 +7,24 @@ class SiteFooter extends HTMLElement {
                 <div class="max-w-5xl mx-auto">
                 <!-- Top line -->
                 <div class="flex items-center justify-between font-bold pb-8 border-b-1 border-gray-400">
-                    <div class="flex items-center gap-2">
-                    <img src="/images/logo-white-with-motif.png" height="48" width="48">
-                    <div class="text-2xl">
-                        <p>Your <span class="text-yellow-400">sports community</span> platform.</p>
+                    <div class="hidden min-[300px]:flex items-center gap-2">
+                    <img class="hidden sm:block" src="/images/logo-white-with-motif.png" height="48" width="48">
+                    <div class=" text-2xl">
+                        <p>Your <span class="text-gray-400">sports community</span> platform.</p>
                     </div>
                     </div>
 
                     <div class="flex gap-2 text-2xl">
-                    <p>Find community.</p>
                     <div class="">
                         <a href="login.html" class="flex items-center">
-                        <p class="text-gray-400">Get Started.</p>
+                        <p class="text-yellow-400 max-[300px]:text-sm max-[300px]:justify-center">Get Started.</p>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="32"
                             height="32"
                             viewBox="0 0 24 24"
                             fill="none"
-                            stroke="#9ca3af"
+                            stroke="#facc15"
                             stroke-width="1"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -54,4 +53,4 @@ class SiteFooter extends HTMLElement {
     }
 }
 
-customElements.define('site-footer', SiteFooter)
+customElements.define("site-footer", SiteFooter);
