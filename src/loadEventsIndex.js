@@ -53,6 +53,14 @@ async function loadEvents() {
       savedEvents: arrayUnion(eventID),
     });
 
+    // Update the button visually
+    button.disabled = true;
+    button.querySelector("span").textContent = "Saved ✓";
+    button
+      .querySelector("span")
+      .classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
+    button.querySelector("span").classList.add("bg-gray-400");
+
     console.log("Local event:", eventID, " has been saved.");
   });
 
@@ -67,6 +75,14 @@ async function loadEvents() {
       //Save EventID to savedEvents array
       savedEvents: arrayUnion(eventID),
     });
+
+    // Update the button visually
+    button.disabled = true;
+    button.querySelector("span").textContent = "Saved ✓";
+    button
+      .querySelector("span")
+      .classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
+    button.querySelector("span").classList.add("bg-gray-400");
     console.log("Online event:", eventID, " has been saved.");
   });
 }

@@ -1,14 +1,7 @@
 import { onAuthReady } from "./authentication.js";
 import { db, auth } from "./firebaseConfig.js";
 import { doc, onSnapshot, getDoc } from "firebase/firestore";
-
-// function unloggedUserRedirect() {
-//   onAuthStateChanged(auth, (user) => {
-//     if (!user) {                                 ADD REDIRECT FOR NON LOGGED IN USERS
-//       window.location.href = "login.html";
-//     }
-//   });
-// }
+import { createCardHTML } from "./templateEventCard.js";
 
 // Function to fetch the signed-in user's name and display it in the UI
 function showUsername() {
@@ -85,7 +78,7 @@ function showAge() {
     const userDoc = await getDoc(doc(db, "users", user.uid));
 
     // Determine which name to display:
-    const age = userDoc.data().age; // Set email variable = user's email
+    const age = userDoc.data().age; // Set age = user's age
 
     // If the DOM element exists, update its text using a template literal to add "!"
     if ("user-age") {
@@ -93,7 +86,34 @@ function showAge() {
     }
   });
 }
-// unloggedUserRedirect(); TO FINISH
+
+async function loadSavedEvents() {
+  onAuthReady(async (user) => {
+    if (!user) return;
+
+    //Get user doc to check savedEvents list
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+    const savedEvents = userDoc.data()?.savedEvents ?? [];
+
+    // Create an array for the saved event documents
+    const eventPromises = savedEvents.map((eventID) =>
+      getDoc(doc(db, "events", eventID)),
+    );
+    const eventDocs = await Promise.all(eventPromises);
+
+    const cardArea = document.getElementById("card-area");
+    cardArea.innerHTML = "";
+
+    eventDocs.forEach((eventDoc) => {
+      if (eventDoc.exists()) {
+        const event = { id: eventDoc.id, ...eventDoc.data() };
+        cardArea.innerHTML += createCardHTML(event, true);
+      }
+    });
+  });
+}
+
 showUsername();
 showEmail();
 showAge();
+loadSavedEvents();
