@@ -2,7 +2,7 @@ export function createCardHTML(event) {
   return `
     <div class="flex flex-col h-full w-full max-w-[370px] overflow-hidden min-w-0">
         <img class="rounded-t-[45px] w-full max-w-full h-52 object-cover border-1 border-gray-200" src="${event.image || "/images/dynamic-soccer-crowd-cheer-fan-vector-silhouette-background.jpg"}" ></img> 
-        <div class="border-1 border-gray-200 flex flex-col flex-1 justify-evenly">
+        <div class="border-1 border-gray-200 flex flex-col flex-1 justify-between">
             <div class="flex justify-evenly gap-4 pt-3 space-y-3 text-[12px] pr-4">
                 <div class="font-bold border-r-1 border-gray-600 pr-4 pl-4 break-words">${event.title}</div>
                 <div class="text-gray-600 border-r-1 pr-4 ">${event.location}</div>
@@ -20,7 +20,7 @@ export function createCardHTML(event) {
               event.noSmoking ||
               event.restrictionsTextbox
                 ? `<span class=" pl-4 text-[12px] font-semibold">Restrictions:</span>
-                <div id="restrictions-area" class="flex flex-wrap gap-1 text-[12px] font-semibold items-center py-1 px-4">
+                <div id="restrictions-area" class="flex flex-wrap gap-1 text-[12px] font-semibold items-center px-4">
                 ${event.noAlchohol ? `<span class="bg-[#464646] text-white p-1 rounded-xl" >No Alchohol</span>` : ""}
                 ${event.noGluten ? `<span class="bg-[#464646] text-white p-1 rounded-xl">No Gluten</span>` : ""}
                 ${event.noKids ? `<spa class="bg-[#464646] text-white p-1 rounded-xl"n>No Kids</spa>` : ""}
@@ -30,6 +30,7 @@ export function createCardHTML(event) {
                 : ""
             }
             </div>
+            <button data-id="${event.id}"><span class="text-xl mx-auto mt-1 bg-[#facc15] flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer active:bg-[#fde047]">Save</span></button>
         </div>
     </div>    
     `;
