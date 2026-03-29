@@ -21,8 +21,13 @@ async function loadEvents() {
   const localGrid = document.getElementById("local-events-grid"); //separate local and online events
   const onlineGrid = document.getElementById("online-events-grid");
 
+  //Grab current user's ID
   const user = auth.currentUser;
   const uid = user.uid;
+
+  //Get Users saved events
+  const userDoc = await getDoc(doc(db, "users", uid));
+  const savedEvents = userDoc.data()?.savedEvents ?? [];
 
   const snapshot = await getDocs(collection(db, "events"));
   // console.log(snapshot)
@@ -34,7 +39,7 @@ async function loadEvents() {
 
   // console.log(allEvents)
 
-  renderEvents(allEvents);
+  renderEvents(allEvents, savedEvents);
 
   //Add event listeners for local grid save buttons
   localGrid.addEventListener("click", async (e) => {
@@ -66,7 +71,7 @@ async function loadEvents() {
   });
 }
 
-function renderEvents(allEvents) {
+function renderEvents(allEvents, savedEvents = []) {
   const localGrid = document.getElementById("local-events-grid"); //separate local and online events
   const onlineGrid = document.getElementById("online-events-grid");
 
@@ -77,7 +82,8 @@ function renderEvents(allEvents) {
   let onlineCount = 0;
 
   allEvents.forEach((event) => {
-    const card = createCardHTML(event);
+    const isSaved = savedEvents.includes(event.id);
+    const card = createCardHTML(event, isSaved);
 
     if (event.type === "local" && localCount < 6) {
       localGrid.innerHTML += card;
