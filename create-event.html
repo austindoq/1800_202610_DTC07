@@ -68,7 +68,7 @@
                 >
                   <h1>Event Title<span class="text-red-600">*</span></h1>
                   <h1>Event Type<span class="text-red-600">*</span></h1>
-                  <h1>Location<span class="text-red-600">*</span></h1>
+                  <h1>Address<span class="text-red-600">*</span></h1>
                   <h1>Time<span class="text-red-600">*</span></h1>
                   <h1>Age Group</h1>
                   <h1>Restrictions</h1>
@@ -93,7 +93,7 @@
                     id="event-location"
                     name="event-location"
                     type="text"
-                    placeholder="Location"
+                    placeholder="Address"
                     class="border border-slate-400 rounded-md p-2"
                   />
                   <input
@@ -125,52 +125,60 @@
               <!-- RESTRICTIONS CHECKBOXES -->
               <div
                 id="restrictions-options-container"
-                class="hidden md:flex gap-6 pt-2 justify-end"
+                class="hidden md:flex gap-5 pt-2 justify-end"
               >
-                <div class="flex items-center gap-1">
-                  <h1 class="text-2xl pb-1" for="restriction-kidfree">
+                <label
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md"
+                >
+                  <span class="text-2xl pb-1" for="restriction-kidfree">
                     Kid Free
-                  </h1>
+                  </span>
                   <input
                     id="restriction-kidfree"
                     name="restriction-kidfree"
                     type="checkbox"
-                    class="size-5 rounded-lg"
+                    class="size-5 rounded-lg shrink-0"
                   />
-                </div>
-                <div class="flex items-center gap-1">
-                  <h1 class="text-2xl pb-1" for="restriction-kidfree">
+                </label>
+                <label
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md"
+                >
+                  <span class="text-2xl pb-1" for="restriction-kidfree">
                     Alchohol Free
-                  </h1>
+                  </span>
                   <input
                     id="restriction-alchoholfree"
                     name="restriction-alchoholfree"
                     type="checkbox"
-                    class="size-5 rounded-lg"
+                    class="size-5 rounded-lg shrink-0"
                   />
-                </div>
-                <div class="flex items-center gap-1">
-                  <h1 class="text-2xl pb-1" for="restriction-kidfree">
+                </label>
+                <label
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md"
+                >
+                  <span class="text-2xl pb-1" for="restriction-kidfree">
                     Smoke Free
-                  </h1>
+                  </span>
                   <input
                     id="restriction-smokefree"
                     name="restriction-smokefree"
                     type="checkbox"
-                    class="size-5 rounded-lg"
+                    class="size-5 rounded-lg shrink-0"
                   />
-                </div>
-                <div class="flex items-center gap-1">
-                  <h1 class="text-2xl pb-1" for="restriction-kidfree">
+                </label>
+                <label
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md"
+                >
+                  <span class="text-2xl pb-1" for="restriction-kidfree">
                     Gluten Free
-                  </h1>
+                  </span>
                   <input
                     id="restriction-glutenfree"
                     name="restriction-glutenfree"
                     type="checkbox"
-                    class="size-5 rounded-lg"
+                    class="size-5 rounded- shrink-0"
                   />
-                </div>
+                </label>
               </div>
             </div>
           </div>
@@ -231,13 +239,13 @@
               </div>
               <div class="flex flex-col gap-2">
                 <h1 class="text-3xl font-semibold">
-                  Location<span class="text-red-600">*</span>
+                  Address<span class="text-red-600">*</span>
                 </h1>
                 <input
                   id="event-location-sm"
                   name="event-location"
                   type="text"
-                  placeholder="Location"
+                  placeholder="Address"
                   class="border border-slate-400 rounded-md p-2 text-2xl"
                 />
               </div>
@@ -283,7 +291,9 @@
               class="flex justify-around items-center gap-4"
             >
               <div id="restriction-row-1">
-                <div class="flex items-center justify-between gap-1">
+                <div
+                  class="flex items-center justify-between gap-1 p-1 border mb-1 border-slate-400 rounded-md"
+                >
                   <h1 class="text-2xl pb-1" for="restriction-kidfree">
                     Kid Free
                   </h1>
@@ -291,10 +301,12 @@
                     id="restriction-kidfree-sm"
                     name="restriction-kidfree"
                     type="checkbox"
-                    class="size-7 rounded-lg"
+                    class="size-7 rounded-lg shrink-0"
                   />
                 </div>
-                <div class="flex items-center gap-1">
+                <div
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md mb-1"
+                >
                   <h1 class="text-2xl pb-1" for="restriction-kidfree">
                     Alchohol Free
                   </h1>
@@ -302,12 +314,14 @@
                     id="restriction-alchoholfree-sm"
                     name="restriction-alchoholfree"
                     type="checkbox"
-                    class="size-7 rounded-lg"
+                    class="size-7 rounded-lg shrink-0"
                   />
                 </div>
               </div>
               <div id="restriction-row-2">
-                <div class="flex items-center gap-1">
+                <div
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md mb-1"
+                >
                   <h1 class="text-2xl pb-1" for="restriction-kidfree">
                     Smoke Free
                   </h1>
@@ -315,10 +329,12 @@
                     id="restriction-smokefree-sm"
                     name="restriction-smokefree"
                     type="checkbox"
-                    class="size-7 rounded-lg"
+                    class="size-7 rounded-lg shrink-0"
                   />
                 </div>
-                <div class="flex items-center gap-1">
+                <div
+                  class="flex items-center gap-1 p-1 border border-slate-400 rounded-md mb-1"
+                >
                   <h1 class="text-2xl pb-1" for="restriction-kidfree">
                     Gluten Free
                   </h1>
@@ -326,7 +342,7 @@
                     id="restriction-glutenfree-sm"
                     name="restriction-glutenfree"
                     type="checkbox"
-                    class="size-7 rounded-lg"
+                    class="size-7 rounded-lg shrink-0"
                   />
                 </div>
               </div>

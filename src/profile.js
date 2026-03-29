@@ -104,6 +104,11 @@ async function loadSavedEvents() {
     const cardArea = document.getElementById("card-area");
     cardArea.innerHTML = "";
 
+    if (savedEvents.length === 0) {
+      document.getElementById("card-area").innerHTML =
+        "You have no saved events. Click 'Save' on an event and it will show up here";
+    }
+
     eventDocs.forEach((eventDoc) => {
       if (eventDoc.exists()) {
         const event = { id: eventDoc.id, ...eventDoc.data() };
