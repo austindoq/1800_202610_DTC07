@@ -1,6 +1,14 @@
 import { onAuthReady } from "./authentication.js";
 import { db, auth } from "./firebaseConfig.js";
-import { doc, onSnapshot, getDoc } from "firebase/firestore";
+import {
+  doc,
+  onSnapshot,
+  getDocs,
+  getDoc,
+  query,
+  where,
+  collection,
+} from "firebase/firestore";
 import { createCardHTML } from "./templateEventCard.js";
 
 // Function to fetch the signed-in user's name and display it in the UI
@@ -87,6 +95,32 @@ function showAge() {
   });
 }
 
+async function loadHostedEvents() {
+  onAuthReady(async (user) => {
+    if (!user) return;
+
+    const hostedEventQuery = query(
+      //Return a filterd result of events that are hosted by userID
+      collection(db, "events"),
+      where("hostID", "==", user.uid),
+    );
+
+    const hostedEventsSnap = await getDocs(hostedEventQuery);
+
+    const cardArea = document.getElementById("host-card-area");
+
+    if (hostedEventsSnap.empty) {
+      cardArea.innerHTML = "You haven't hosted any events yet.";
+      return;
+    }
+
+    hostedEventsSnap.forEach((doc) => {
+      const event = { id: doc.id, ...doc.data() };
+      cardArea.innerHTML += createCardHTML(event, false, true);
+    });
+  });
+}
+
 async function loadSavedEvents() {
   onAuthReady(async (user) => {
     if (!user) return;
@@ -121,4 +155,5 @@ async function loadSavedEvents() {
 showUsername();
 showEmail();
 showAge();
+loadHostedEvents();
 loadSavedEvents();

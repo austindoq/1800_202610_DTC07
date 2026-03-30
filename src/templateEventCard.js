@@ -1,4 +1,4 @@
-export function createCardHTML(event, isSaved = false) {
+export function createCardHTML(event, isSaved = false, showAttendees = false) {
   return `
     <div class="flex flex-col h-full w-full max-w-[370px] overflow-hidden min-w-0">
         <img class="rounded-t-[45px] w-full max-w-full h-52 object-cover border-1 border-gray-200" src="${event.image || "/images/dynamic-soccer-crowd-cheer-fan-vector-silhouette-background.jpg"}" ></img> 
@@ -30,7 +30,11 @@ export function createCardHTML(event, isSaved = false) {
                 : ""
             }
             </div>
-            <button data-id="${event.id}" ${isSaved ? "Disabled" : ""}><span class="${isSaved ? "bg-gray-400" : "bg-[#facc15]"} ${!isSaved ? "active:bg-[#fde047]" : "active:bg-[#464646]"} text-xl mx-auto mt-1 flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer ">${isSaved ? "Saved ✓" : "Save"}</span></button>
+            ${
+              showAttendees
+                ? `<div class="text-center py-2 font-semibold text-sm">Attendees: ${event.attendees ? event.attendees.length : 0}</div>`
+                : `<button data-id="${event.id}" ${isSaved ? "Disabled" : ""}><span class="${isSaved ? "bg-gray-400" : "bg-[#facc15]"} ${!isSaved ? "active:bg-[#fde047]" : "active:bg-[#464646]"} text-xl mx-auto mt-1 flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer ">${isSaved ? "Saved ✓" : "Save"}</span></button>`
+            }
         </div>
     </div>    
     `;

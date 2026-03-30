@@ -53,6 +53,11 @@ async function loadEvents() {
       savedEvents: arrayUnion(eventID),
     });
 
+    await updateDoc(doc(db, "events", eventID), {
+      //Save the userID to the event's attendees array
+      attendees: arrayUnion(uid),
+    });
+
     // Update the button visually
     button.disabled = true;
     button.querySelector("span").textContent = "Saved ✓";
@@ -76,7 +81,12 @@ async function loadEvents() {
       savedEvents: arrayUnion(eventID),
     });
 
-    // Update the button visually
+    await updateDoc(doc(db, "events", eventID), {
+      //Save the userID to the event's attendees array
+      attendees: arrayUnion(uid),
+    });
+
+    // Update the save/saved button visually
     button.disabled = true;
     button.querySelector("span").textContent = "Saved ✓";
     button

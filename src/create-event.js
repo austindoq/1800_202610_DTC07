@@ -71,6 +71,7 @@ onAuthStateChanged(auth, async (user) => {
     try {
       const eventCollectionRef = collection(db, "events");
       await addDoc(eventCollectionRef, {
+        hostID: user.uid,
         host: userName,
         title: eventTitle,
         type: eventType,
