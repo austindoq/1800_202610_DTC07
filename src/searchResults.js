@@ -12,6 +12,12 @@ const activeFilters = queryParameters.get("filters")?.split(",") || []
 const summary = document.getElementById("search-summary")
 summary.textContent = queryValue ? `Results for "${queryValue}"` : `Search by keyword(s)`
 
+//for keeping search inputs written in search bar
+const searchInputs = document.querySelectorAll("#keyword-search")
+searchInputs.forEach((input) =>{
+    input.value = queryValue
+})
+
 async function loadSearchResults() {
     const snapshot = await getDocs(collection(db, "events"));
     const allEvents = [];
@@ -20,11 +26,20 @@ async function loadSearchResults() {
         allEvents.push({ id: doc.id, ...doc.data() });
     });
 
+
+    //normalize the query
+    let normalizeQuery = queryValue.replace(/\s+/g, "")
+
     let filteredEvents = allEvents.filter((event) => {
         if (queryValue == 0){
             return true
         }else{
-            return (event.title?.toLowerCase().includes(queryValue) || event.location?.toLowerCase().includes(queryValue) || event.host?.toLowerCase().includes(queryValue));
+            let fields = [event.title, event.location, event.host]
+            return fields.some((field) => {
+                let lower = field?.toLowerCase() || "";
+                let lowerNoSpaces = lower.replace(/\s+/g, "")
+                return lower.includes(queryValue) || lowerNoSpaces.includes(normalizeQuery)
+            })
         }
 
     })

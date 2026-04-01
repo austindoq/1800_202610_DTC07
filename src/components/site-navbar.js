@@ -106,7 +106,7 @@ class SiteNavbar extends HTMLElement {
                             
                             <div class="bg-gray-200 rounded-full flex flex-shrink-0 gap-5 md:pl-2">
                                 <div class="relative flex items-center">
-                                    <button id="search-filter" type="button" class="flex max-[350px]:hidden items-center gap-2 text-gray-800 min-w-0">
+                                    <button id="search-filter" type="button" class="flex items-center gap-2 text-gray-800 min-w-0">
                                         <svg
                                         class = "pl-2"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -115,13 +115,13 @@ class SiteNavbar extends HTMLElement {
                                         fill="none"/>
                                         <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
                                         </svg>
-                                        Filter
+                                        <div class="max-[350px]:hidden block">Filter</div>
                                         <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                                         </svg>
                                     </button>
                                     <!-- DROPDOWN PANEL -->
-                                    <div id="filter-dropdown" class="hidden absolute space-y-6 left-0 top-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 p-3 min-w-[160px]">
+                                    <div id="filter-dropdown" class="hidden absolute space-y-6 left-0 max-[350px]:-translate-x-12 top-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 p-3 min-w-[160px]">
                                         <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
                                             <input type="checkbox" data-filter="noAlchohol" class="filter-checkbox size-4"> No Alcohol
                                         </label>
