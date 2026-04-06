@@ -144,11 +144,11 @@
                   class="flex items-center gap-1 p-1 border border-slate-400 rounded-md"
                 >
                   <span class="text-2xl pb-1" for="restriction-kidfree">
-                    Alchohol Free
+                    Alcohol Free
                   </span>
                   <input
-                    id="restriction-alchoholfree"
-                    name="restriction-alchoholfree"
+                    id="restriction-alcoholfree"
+                    name="restriction-alcoholfree"
                     type="checkbox"
                     class="size-5 rounded-lg shrink-0"
                   />
@@ -257,8 +257,60 @@
                   id="event-date-sm"
                   name="event-date"
                   type="date"
-                  class="text-2xl w-fit"
+                  class="text-2xl w-fit border border-slate-400 rounded-md py-2 px-10 self-center"
                 />
+              </div>
+              <div class="time-input font-semibold flex justify-evenly text-xl">
+                <!-- Hour -->
+                <div class="flex flex-col items-center">
+                  <label for="hour">HH:</label>
+                  <select
+                    id="hour"
+                    name="hour"
+                    class="border border-slate-400 rounded-md py-2 px-4 text-xl"
+                  >
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+
+                <!-- Minutes -->
+                <div class="flex flex-col items-center">
+                  <label for="minute">MM:</label>
+                  <select
+                    id="minute"
+                    name="minute"
+                    class="border border-slate-400 rounded-md py-2 px-4 text-xl"
+                  >
+                    <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                  </select>
+                </div>
+
+                <!-- Optional AM/PM -->
+                <div class="flex flex-col items-center">
+                  <label for="ampm">AM/PM:</label>
+                  <select
+                    id="ampm"
+                    name="ampm"
+                    class="border border-slate-400 rounded-md py-2 px-4 text-xl"
+                  >
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
               </div>
               <div class="flex flex-col gap-2">
                 <h1 class="text-3xl font-semibold">Age Group</h1>
@@ -308,11 +360,11 @@
                   class="flex items-center gap-1 p-1 border border-slate-400 rounded-md mb-1"
                 >
                   <h1 class="text-2xl pb-1" for="restriction-kidfree">
-                    Alchohol Free
+                    Alcohol Free
                   </h1>
                   <input
-                    id="restriction-alchoholfree-sm"
-                    name="restriction-alchoholfree"
+                    id="restriction-alcoholfree-sm"
+                    name="restriction-alcoholfree"
                     type="checkbox"
                     class="size-7 rounded-lg shrink-0"
                   />
@@ -370,9 +422,9 @@
       </div>
       <!-- ABOVE FOOTER DECORATION -->
       <div class="flex justify-between">
-        <img src="/images/soccer-png1.png" width="130px" />
-        <img src="/images/soccer-png2.png" width="130px" />
-        <img src="/images/soccer-png3.png" width="130px" />
+        <img src="/images/soccer-png3.png" class="w-1/3" />
+        <img src="/images/soccer-png1.png" class="w-1/3" />
+        <img src="/images/soccer-png2.png" class="w-1/3" />
       </div>
     </main>
 
