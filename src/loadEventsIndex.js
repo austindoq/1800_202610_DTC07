@@ -9,6 +9,7 @@ import {
   serverTimestamp,
   updateDoc,
   arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 import { createCardHTML } from "./templateEventCard.js"; // this is importing the createCardHTML function from templateEventCard.js
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -41,59 +42,54 @@ async function loadEvents() {
 
   renderEvents(allEvents, savedEvents);
 
+  async function saveToggle(button, uid) {
+    const eventID = button.dataset.id;
+    const isSaved = button.dataset.saved === "true";
+
+    if (isSaved) {
+      await updateDoc(doc(db, "users", uid), {
+        savedEvents: arrayRemove(eventID),
+      });
+      await updateDoc(doc(db, "events", eventID), {
+        savedEvents: arrayRemove(uid),
+      });
+
+      button.dataset.saved = "false";
+      button.disabled = false;
+      const span = button.querySelector("span");
+      span.textContent = "Save";
+      span.className =
+        "bg-[#facc15] active:bg-[#fde047] text-xl mx-auto mt-1 flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer";
+      console.log("Event ID: ", eventID, "has been unsaved.");
+    } else {
+      // Save event button visible
+      await updateDoc(doc(db, "users", uid), {
+        savedEvents: arrayUnion(eventID),
+      });
+      await updateDoc(doc(db, "events", eventID), {
+        attendees: arrayUnion(uid),
+      });
+
+      button.dataset.saved = "true";
+      const span = button.querySelector("span");
+      span.textContent = "Saved ✓";
+      span.classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
+      span.classList.add("bg-gray-400");
+      console.log("Event ID:", eventID, "has been saved");
+    }
+  }
   //Add event listeners for local grid save buttons
   localGrid.addEventListener("click", async (e) => {
     const button = e.target.closest("button[data-id]");
     if (!button) return;
-
-    const eventID = button.dataset.id;
-
-    await updateDoc(doc(db, "users", uid), {
-      //Save EventID to savedEvents array
-      savedEvents: arrayUnion(eventID),
-    });
-
-    await updateDoc(doc(db, "events", eventID), {
-      //Save the userID to the event's attendees array
-      attendees: arrayUnion(uid),
-    });
-
-    // Update the button visually
-    button.disabled = true;
-    button.querySelector("span").textContent = "Saved ✓";
-    button
-      .querySelector("span")
-      .classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
-    button.querySelector("span").classList.add("bg-gray-400");
-
-    console.log("Local event:", eventID, " has been saved.");
+    await saveToggle(button, uid);
   });
 
   //Add event listeners for online grid save buttons
   onlineGrid.addEventListener("click", async (e) => {
     const button = e.target.closest("button[data-id]");
     if (!button) return;
-
-    const eventID = button.dataset.id;
-
-    await updateDoc(doc(db, "users", uid), {
-      //Save EventID to savedEvents array
-      savedEvents: arrayUnion(eventID),
-    });
-
-    await updateDoc(doc(db, "events", eventID), {
-      //Save the userID to the event's attendees array
-      attendees: arrayUnion(uid),
-    });
-
-    // Update the save/saved button visually
-    button.disabled = true;
-    button.querySelector("span").textContent = "Saved ✓";
-    button
-      .querySelector("span")
-      .classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
-    button.querySelector("span").classList.add("bg-gray-400");
-    console.log("Online event:", eventID, " has been saved.");
+    await saveToggle(button, uid);
   });
 }
 

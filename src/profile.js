@@ -8,6 +8,8 @@ import {
   query,
   where,
   collection,
+  updateDoc,
+  arrayRemove,
 } from "firebase/firestore";
 import { createCardHTML } from "./templateEventCard.js";
 
@@ -148,6 +150,32 @@ async function loadSavedEvents() {
         const event = { id: eventDoc.id, ...eventDoc.data() };
         cardArea.innerHTML += createCardHTML(event, true);
       }
+    });
+
+    // Add the listener for unsave clicks
+    cardArea.addEventListener("click", async (e) => {
+      const button = e.target.closest("button[data-id]");
+      if (!button) return;
+
+      const eventID = button.dataset.id;
+
+      await updateDoc(doc(db, "users", user.uid), {
+        savedEvents: arrayRemove(eventID),
+      });
+      await updateDoc(doc(db, "events", eventID), {
+        attendees: arrayRemove(user.uid),
+      });
+
+      // Remove the card from the UI
+      button.closest(".max-w-\\[370px\\]").remove();
+
+      // Show empty message if no cards left
+      if (cardArea.innerHTML.trim() === "") {
+        cardArea.innerHTML =
+          "You have no saved events. Click 'Save' on an event and it will show up here";
+      }
+
+      console.log("Event:", eventID, "has been unsaved.");
     });
   });
 }
