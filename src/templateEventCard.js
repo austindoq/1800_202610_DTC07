@@ -21,11 +21,11 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
               event.restrictionsTextbox
                 ? `<span class=" pl-4 text-[12px] font-semibold">Restrictions:</span>
                 <div id="restrictions-area" class="flex flex-wrap gap-1 text-[12px] font-semibold items-center px-4">
-                ${event.noAlchohol ? `<span class="bg-[#464646] text-white p-1 rounded-xl" >No Alchohol</span>` : ""}
-                ${event.noGluten ? `<span class="bg-[#464646] text-white p-1 rounded-xl">No Gluten</span>` : ""}
-                ${event.noKids ? `<spa class="bg-[#464646] text-white p-1 rounded-xl"n>No Kids</spa>` : ""}
-                ${event.noSmoking ? ` <span class="bg-[#464646] text-white p-1 rounded-xl">No Smoking</span>` : ""}
-                ${event.restrictionsTextbox ? `<span class="bg-[#464646] text-white p-1 rounded-xl">${event.restrictionsTextbox}</span>` : ""}
+                ${event.noAlchohol ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl" >No Alcohol</span>` : ""}
+                ${event.noGluten ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">No Gluten</span>` : ""}
+                ${event.noKids ? `<spa class="bg-[#464646] text-white p-1 px-1.5 rounded-xl"n>No Kids</spa>` : ""}
+                ${event.noSmoking ? ` <span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">No Smoking</span>` : ""}
+                ${event.restrictionsTextbox ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">${event.restrictionsTextbox}</span>` : ""}
                 </div>`
                 : ""
             }
