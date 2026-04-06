@@ -46,22 +46,33 @@ class SiteNavbar extends HTMLElement {
                                     </svg>
                                 </button>
                                 <!-- DROPDOWN PANEL -->
-                                <div id="filter-dropdown" class="hidden absolute left-0 top-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 p-3 min-w-[160px]">
-                                    <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
-                                        <input type="checkbox" data-filter="noAlchohol" class="filter-checkbox size-4"> No Alcohol
-                                    </label>
-                                    <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
-                                        <input type="checkbox" data-filter="noKids" class="filter-checkbox size-4"> No Kids
-                                    </label>
-                                    <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
-                                        <input type="checkbox" data-filter="noSmoking" class="filter-checkbox size-4"> No Smoking
-                                    </label>
-                                    <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
-                                        <input type="checkbox" data-filter="noGluten" class="filter-checkbox size-4"> No Gluten
-                                    </label>
-                                    <button id="apply-filters" class="mt-2 w-full bg-yellow-400 rounded-lg py-1 text-sm font-semibold hover:bg-yellow-300">
-                                        Apply
-                                    </button>
+                                <div id="filter-dropdown" class="hidden absolute space-y-3 left-0 top-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 p-3 min-w-[160px]">
+                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider pt-1">Event Type</p>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="local" class="filter-checkbox size-4"> In-Person
+                                        </label>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="online" class="filter-checkbox size-4"> Online
+                                        </label>
+                                        
+                                        <hr class="border-gray-200" />
+                                        
+                                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Restrictions</p>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="noAlchohol" class="filter-checkbox size-4"> No Alcohol
+                                        </label>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="noKids" class="filter-checkbox size-4"> No Kids
+                                        </label>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="noSmoking" class="filter-checkbox size-4"> No Smoking
+                                        </label>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="noGluten" class="filter-checkbox size-4"> No Gluten
+                                        </label>
+                                        <button id="apply-filters" class="mt-2 w-full bg-yellow-400 rounded-lg py-1 text-sm font-semibold hover:bg-yellow-300">
+                                            Apply
+                                        </button>
                                 </div>
                             </div>
                         
