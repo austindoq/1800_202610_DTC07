@@ -96,8 +96,10 @@ class SiteNavbar extends HTMLElement {
                         </a>
                         <!-- PROFILE -->
                         <div id="profile-icon" class="flex ml-auto mr-6 pl-6">
-                        <a href="/profile.html" class="flex items-center min-h-12 min-w-12">
-                            <img src="/images/Profile.svg" width="50" height="50"></a>
+                            <a href="/profile.html" class="flex flex-col items-center min-h-12 min-w-12">
+                                <img src="/images/Profile.svg" width="48" height="48">
+                                <span id="nav-user-name" class="text-xs font-semibold"></span>
+                            </a>
                         </div>
                         <!-- END OF PROFILE -->
                         </div>
@@ -106,8 +108,8 @@ class SiteNavbar extends HTMLElement {
                 <!-- END OF MAIN NAVBAR -->
                 
                 
-                <!-- NAV - SEARCH BAR -->
-                    <div class="flex justify-center mx-4 pt-2 pb-4">
+                <!-- NAV - MOBILE SEARCH BAR -->
+                    <div class="min-[640px]:hidden flex justify-center mx-4 pt-2 pb-4">
                         <div class="search-container flex sm:hidden justify-between items-center sm:mx-0 bg-white px-1 py-1 rounded-full outline-gray-400 outline-1 max-w-sm">
                             <!-- keyword search -->
                             <div class="pl-3 min-w-0">
@@ -133,6 +135,17 @@ class SiteNavbar extends HTMLElement {
                                     </button>
                                     <!-- DROPDOWN PANEL -->
                                     <div id="filter-dropdown" class="hidden absolute space-y-6 left-0 max-[350px]:-translate-x-12 top-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 p-3 min-w-[160px]">
+                                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider pt-1">Event Type</p>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="local" class="filter-checkbox size-4"> In-Person
+                                        </label>
+                                        <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
+                                            <input type="checkbox" data-filter="online" class="filter-checkbox size-4"> Online
+                                        </label>
+                                        
+                                        <hr class="border-gray-200" />
+
+                                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Restrictions</p>
                                         <label class="flex items-center gap-2 py-1 cursor-pointer text-sm font-medium">
                                             <input type="checkbox" data-filter="noAlchohol" class="filter-checkbox size-4"> No Alcohol
                                         </label>
@@ -166,13 +179,25 @@ class SiteNavbar extends HTMLElement {
             <!-- END OF NAVBAR -->
         `;
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             //we run auth check after innerHTML is set so the profile element exists first
             const profileIcon = this.querySelector("#profile-icon");
             if (profileIcon) {
                 profileIcon.style.display = user ? "flex" : "none";
             }
+
+            if (user) {
+                const { getFirestore, doc, getDoc } = await import("firebase/firestore");
+                const db = getFirestore();
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                const nameSpan = this.querySelector("#nav-user-name");
+                if (nameSpan && userDoc.exists()) {
+                    nameSpan.textContent = userDoc.data().username;
+                }
+            }
+
         });
+
 
 
 
