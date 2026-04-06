@@ -44,12 +44,20 @@ async function loadSearchResults() {
 
     })
 
-    activeFilters.forEach((filterKey) => {
-        if (filterKey) {
+    const typeFilters = activeFilters.filter((x) => x === "local" || x === "online")
+    const restrictionFilters = activeFilters.filter((x) => x != "local" && x != "online")
+
+    //filter by event type
+    if (typeFilters.length > 0) { 
+        filteredEvents = filteredEvents.filter(event => typeFilters.includes(event.type))
+    }
+
+    //filter by restrictions
+    restrictionFilters.forEach((filterKey) => {
+        if (filterKey){
             filteredEvents = filteredEvents.filter((event) => event[filterKey] === true)
         }
     })
-
 
     renderEvents(filteredEvents)
 }
