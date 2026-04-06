@@ -39,6 +39,9 @@ onAuthStateChanged(auth, async (user) => {
     const eventType = getInput("event-type-sm", "event-type");
     const eventLocation = getInput("event-location-sm", "event-location");
     const eventDate = getInput("event-date-sm", "event-date");
+    const eventHour = getInput("event-hour-sm", "event-hour");
+    const eventMinute = getInput("event-minute-sm", "event-minute");
+    const eventAMPM = getInput("ampm-sm", "ampm");
     const eventAgeGroup = getInput("event-age-group-sm", "event-age-group");
     const restrictionsText = getInput(
       "event-restriction-text-sm",
@@ -48,9 +51,9 @@ onAuthStateChanged(auth, async (user) => {
       "restriction-kidfree-sm",
       "restriction-kidfree",
     );
-    const noAlchoholRestriction = getChecked(
-      "restriction-alchoholfree-sm",
-      "restriction-alchoholfree",
+    const noAlcoholRestriction = getChecked(
+      "restriction-alcoholfree-sm",
+      "restriction-alcoholfree",
     );
     const noSmokingRestriction = getChecked(
       "restriction-smokefree-sm",
@@ -63,7 +66,14 @@ onAuthStateChanged(auth, async (user) => {
 
     const eventDescription = document.getElementById("event-description").value;
 
-    if (!eventTitle || !eventLocation || !eventDate) {
+    if (
+      !eventTitle ||
+      !eventLocation ||
+      !eventDate ||
+      !eventHour ||
+      !eventMinute ||
+      !eventAMPM
+    ) {
       alert("Please fill in all required fields");
       return;
     }
@@ -77,14 +87,16 @@ onAuthStateChanged(auth, async (user) => {
         type: eventType,
         location: eventLocation,
         time: eventDate,
+        hour: eventHour,
+        minute: eventMinute,
+        ampm: eventAMPM,
         ageGroup: eventAgeGroup,
         description: eventDescription,
         restrictionsTextbox: restrictionsText,
         noKids: noKidsRestriction,
-        noAlchohol: noAlchoholRestriction,
+        noAlcohol: noAlcoholRestriction,
         noSmoking: noSmokingRestriction,
         noGluten: noGlutenRestriction,
-        eventImage: "", //Placeholder until we have a database to store images
       });
       alert("Event added successfully!");
       window.location.href = "./main.html";

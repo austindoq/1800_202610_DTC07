@@ -6,7 +6,10 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
             <div class="flex justify-evenly gap-4 pt-3 space-y-3 text-[12px] pr-4">
                 <div class="font-bold border-r-1 border-gray-600 pr-4 pl-4 break-words">${event.title}</div>
                 <div class="text-gray-600 border-r-1 pr-4 ">${event.location}</div>
-                <div class="text-gray-600 ">${event.time}</div>
+                <div class="flex flex-col">
+                  <div class="text-gray-600 ">${event.time}</div>
+                  <div class="text-gray-600 ">${event.hour}:${event.minute}${event.ampm}</div>
+                </div>
             </div>
             <div class="text-gray-600 text-[12px] px-4">${event.description || "No description for this event"}</div>
             <div class="text-gray-600 py-1 pl-4 text-[12px]">Hosted by: @${event.host}</div>
