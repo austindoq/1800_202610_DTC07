@@ -28,17 +28,15 @@ async function loadEvents() {
 
   //Get Users saved events
   const userDoc = await getDoc(doc(db, "users", uid));
-  const savedEvents = userDoc.data()?.savedEvents ?? [];
+  const savedEvents = userDoc.data()?.savedEvents ?? []; //Try to find savedEvents array, if undefined/null use an empty array
 
+  //Get an object containing the contents of the events collection
   const snapshot = await getDocs(collection(db, "events"));
-  // console.log(snapshot)
 
   //save all events first
   snapshot.forEach((doc) => {
-    allEvents.push({ id: doc.id, ...doc.data() });
+    allEvents.push({ id: doc.id, ...doc.data() }); //Use the spread operator to flatten original data + doc ID
   });
-
-  // console.log(allEvents)
 
   renderEvents(allEvents, savedEvents);
 
@@ -47,6 +45,7 @@ async function loadEvents() {
     const isSaved = button.dataset.saved === "true";
 
     if (isSaved) {
+      //If the event the button is attached to is already saved, remove the event from savedEvents, display "Save" button again
       await updateDoc(doc(db, "users", uid), {
         savedEvents: arrayRemove(eventID),
       });
@@ -62,7 +61,7 @@ async function loadEvents() {
         "bg-[#facc15] active:bg-[#fde047] text-xl mx-auto mt-1 flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer";
       console.log("Event ID: ", eventID, "has been unsaved.");
     } else {
-      // Save event button visible
+      // Else, if not in user's savedEvents array add it, update button to new look and Unsave text
       await updateDoc(doc(db, "users", uid), {
         savedEvents: arrayUnion(eventID),
       });
@@ -72,9 +71,9 @@ async function loadEvents() {
 
       button.dataset.saved = "true";
       const span = button.querySelector("span");
-      span.textContent = "Saved ✓";
+      span.textContent = "Unsave ✕";
       span.classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
-      span.classList.add("bg-gray-400");
+      span.classList.add("bg-gray-300");
       console.log("Event ID:", eventID, "has been saved");
     }
   }
@@ -123,5 +122,5 @@ const auth = getAuth();
 
 onAuthStateChanged(auth, (user) => {
   //Wait for user to be authenticated then load events with users saved events applied
-  loadEvents(user.uid); //run on page load
+  loadEvents(user.uid);
 });
