@@ -14,10 +14,14 @@ import {
 import { createCardHTML } from "./templateEventCard.js"; // this is importing the createCardHTML function from templateEventCard.js
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+//Get auth instance
+const auth = getAuth();
+
 //storing events so search can access them
 let allEvents = [];
 
-// This is the function to fetch events from Firestore and render cards
+//==================================================
+// This is the main high level function to fetch events from Firestore and render cards
 async function loadEvents() {
   const localGrid = document.getElementById("local-events-grid"); //separate local and online events
   const onlineGrid = document.getElementById("online-events-grid");
@@ -35,11 +39,14 @@ async function loadEvents() {
 
   //save all events first
   snapshot.forEach((doc) => {
-    allEvents.push({ id: doc.id, ...doc.data() }); //Use the spread operator to flatten original data + doc ID
+    allEvents.push({ id: doc.id, ...doc.data() }); //Use the spread operator to flatten original data + doc ID. Add to array
   });
+  //==================================================
 
   renderEvents(allEvents, savedEvents);
 
+  //==================================================
+  //The save/remove event and update firestore logic and update button visuals.
   async function saveToggle(button, uid) {
     const eventID = button.dataset.id;
     const isSaved = button.dataset.saved === "true";
@@ -77,21 +84,30 @@ async function loadEvents() {
       console.log("Event ID:", eventID, "has been saved");
     }
   }
+  //==================================================
+
+  //==================================================
   //Add event listeners for local grid save buttons
   localGrid.addEventListener("click", async (e) => {
     const button = e.target.closest("button[data-id]");
     if (!button) return;
     await saveToggle(button, uid);
   });
+  //==================================================
 
+  //==================================================
   //Add event listeners for online grid save buttons
   onlineGrid.addEventListener("click", async (e) => {
     const button = e.target.closest("button[data-id]");
     if (!button) return;
     await saveToggle(button, uid);
   });
+  //==================================================
 }
+//==================================================
 
+//==================================================
+// This functions pushes the created event cards  to the proper place on the webpage
 function renderEvents(allEvents, savedEvents = []) {
   const localGrid = document.getElementById("local-events-grid"); //separate local and online events
   const onlineGrid = document.getElementById("online-events-grid");
@@ -103,8 +119,8 @@ function renderEvents(allEvents, savedEvents = []) {
   let onlineCount = 0;
 
   allEvents.forEach((event) => {
-    const isSaved = savedEvents.includes(event.id);
-    const card = createCardHTML(event, isSaved);
+    const isSaved = savedEvents.includes(event.id); //Finds out if user has this specific event saved
+    const card = createCardHTML(event, isSaved); //Event card is created with event ID and save state of event
 
     if (event.type === "local" && localCount < 6) {
       localGrid.innerHTML += card;
@@ -116,11 +132,9 @@ function renderEvents(allEvents, savedEvents = []) {
   });
 }
 
-export { allEvents, renderEvents };
-
-const auth = getAuth();
-
 onAuthStateChanged(auth, (user) => {
   //Wait for user to be authenticated then load events with users saved events applied
   loadEvents(user.uid);
 });
+
+export { allEvents, renderEvents };

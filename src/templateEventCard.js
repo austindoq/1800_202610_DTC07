@@ -35,12 +35,12 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
             </div>
             ${
               showAttendees
-                ? `<div class="text-center py-2 font-semibold text-sm">Attendees: ${event.attendees ? event.attendees.length : 0}</div>`
+                ? `<div class="text-center py-2 font-semibold text-md">Attendees: ${event.attendees ? event.attendees.length : 0}</div>`
                 : `<button data-id="${event.id}" data-saved="${isSaved}">
   <span class="${
     isSaved
-      ? "bg-gray-300 active:bg-red-300"
-      : "bg-[#facc15] active:bg-[#fde047]"
+      ? "bg-gray-300 active:font-semibold"
+      : "bg-[#facc15] active:bg-[#fde047] active:font-semibold"
   } text-xl mx-auto mt-1 flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer">
     ${isSaved ? "Unsave ✕" : "Save"}
   </span>

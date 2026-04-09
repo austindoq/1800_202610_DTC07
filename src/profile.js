@@ -143,6 +143,8 @@ async function loadSavedEvents() {
     if (savedEvents.length === 0) {
       document.getElementById("card-area").innerHTML =
         "You have no saved events. Click 'Save' on an event and it will show up here";
+    } else {
+      console.log(`${savedEvents}`);
     }
 
     eventDocs.forEach((eventDoc) => {
