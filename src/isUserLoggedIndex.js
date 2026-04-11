@@ -35,6 +35,17 @@ function updateLoginLogoutButton() {
   })
 }
 
+// hide the get started button if the user is logged in
+function hideGetStartedButton(){
+  onAuthStateChanged(auth, (user) => {
+    const button = document.getElementById("get-started-btn")
+    if (!button) return // if no button on page, don't do anything
+    button.classList.toggle("hidden", !!user) // toggle hidden as a tailwind class
+    }
+  )
+}
+
 
 createEventDisplayCheck();
 updateLoginLogoutButton();
+hideGetStartedButton();
