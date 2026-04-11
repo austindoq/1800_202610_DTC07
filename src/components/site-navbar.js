@@ -1,6 +1,8 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+//==================================================
 
+  //==================================================
 class SiteNavbar extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -178,7 +180,9 @@ class SiteNavbar extends HTMLElement {
             </nav>
             <!-- END OF NAVBAR -->
         `;
+//==================================================
 
+  //==================================================
         onAuthStateChanged(auth, async (user) => {
             //we run auth check after innerHTML is set so the profile element exists first
             const profileIcon = this.querySelector("#profile-icon");
@@ -198,7 +202,9 @@ class SiteNavbar extends HTMLElement {
 
         });
 
+//==================================================
 
+  //==================================================
 
 
         setTimeout(() => {

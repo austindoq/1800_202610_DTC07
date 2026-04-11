@@ -1,3 +1,5 @@
+// this file creates the event card template. Cards are injected into HTML by loadEventsIndex.js, searchResults.js, and profile.js
+
 export function createCardHTML(event, isSaved = false, showAttendees = false) {
   return `
     <div class="flex flex-col h-full w-full max-w-[370px] overflow-hidden min-w-0 shadow-xl">
@@ -14,22 +16,23 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
             <div class="text-gray-600 text-[12px] px-4">${event.description || "No description for this event"}</div>
             <div class="text-gray-600 py-1 pl-4 text-[12px]">Hosted by: @${event.host}</div>
             
-
             
             <div id="restrictions-area-container">${
-              event.noAlchohol ||
-              event.noGluten ||
-              event.noKids ||
-              event.noSmoking ||
-              event.restrictionsTextbox
+              event.noAlchohol ||  // true if "Alcohol Free" was checked on create-event.html
+              event.noGluten ||    // true if "Gluten Free" was checked
+              event.noKids ||      // true if "Kid Free" was checked
+              event.noSmoking ||   // true if "Smoke Free" was checked
+              event.restrictionsTextbox  // truthy if a custom restriction was typed in
+              // If any of the above are truthy, render the full restrictions block:
                 ? `<span class=" pl-4 text-[12px] font-semibold">Restrictions:</span>
                 <div id="restrictions-area" class="flex flex-wrap gap-1 text-[12px] font-semibold items-center px-4">
                 ${event.noAlchohol ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl" >No Alcohol</span>` : ""}
                 ${event.noGluten ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">No Gluten</span>` : ""}
-                ${event.noKids ? `<spa class="bg-[#464646] text-white p-1 px-1.5 rounded-xl"n>No Kids</spa>` : ""}
+                ${event.noKids ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl"n>No Kids</span>` : ""}
                 ${event.noSmoking ? ` <span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">No Smoking</span>` : ""}
                 ${event.restrictionsTextbox ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">${event.restrictionsTextbox}</span>` : ""}
                 </div>`
+                // If all restriction fields are false/empty, render nothing here
                 : ""
             }
             </div>

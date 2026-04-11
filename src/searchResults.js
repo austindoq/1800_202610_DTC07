@@ -4,7 +4,9 @@
 import {db} from "./firebaseConfig.js"
 import {getDocs, collection} from "firebase/firestore"
 import { createCardHTML } from "./templateEventCard.js"
+//==================================================
 
+  //==================================================
 //for search functionality
 // URLSearchParams is a built-in browser API for reading URL query strings
 // window.location.search gives the query and filter part of the URL that search.js builds
@@ -28,7 +30,9 @@ searchInputs.forEach((input) =>{
     //sets the the text in the search bar with the query value so it persists visually
     input.value = queryValue
 })
+//==================================================
 
+  //==================================================
 //async function — fetches all events from Firestore, then filters them
 async function loadSearchResults() {
     //fetches documents from events collection
@@ -59,7 +63,6 @@ async function loadSearchResults() {
                 return lower.includes(queryValue) || lowerNoSpaces.includes(normalizeQuery)
             })
         }
-
     })
 
     //Filter separation
@@ -83,7 +86,9 @@ async function loadSearchResults() {
     //pass final filtered list to render function
     renderEvents(filteredEvents)
 }
+//==================================================
 
+  //==================================================
 // takes filtered events array and build the card HTML in the page
 function renderEvents(events){
     const resultsList = document.getElementById("results-list")
@@ -96,8 +101,7 @@ function renderEvents(events){
 
     //map each event object to a card HTML string using createCardHTML function, combine array into string
     resultsList.innerHTML = events.map((event) => createCardHTML(event)).join("")
-
-
 }
+
 
 loadSearchResults()
