@@ -104,11 +104,10 @@ async function loadSearchResults(user) {
       });
 
       button.dataset.saved = "false";
-      button.disabled = false;
       const span = button.querySelector("span");
       span.textContent = "Save";
-      span.className =
-        "bg-[#facc15] active:bg-[#fde047] text-xl mx-auto mt-1 flex justify-center tracking-widest w-full gap-2 px-2 shadow-md hover:cursor-pointer";
+      span.classList.remove("from-gray-300", "to-gray-400");
+      span.classList.add("from-[#facc15]", "to-[#fde047]");
       console.log("Event ID: ", eventID, "has been unsaved.");
     } else {
       // Else, if not in user's savedEvents array add it, update button to new look and Unsave text
@@ -122,8 +121,8 @@ async function loadSearchResults(user) {
       button.dataset.saved = "true";
       const span = button.querySelector("span");
       span.textContent = "Unsave ✕";
-      span.classList.remove("bg-[#facc15]", "active:bg-[#fde047]");
-      span.classList.add("bg-gray-300");
+      span.classList.remove("from-[#facc15]", "to-[#fde047]");
+      span.classList.add("from-gray-300", "to-gray-400");
       console.log("Event ID:", eventID, "has been saved");
     }
   }
