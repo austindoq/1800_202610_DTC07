@@ -1,7 +1,6 @@
 // Takes queries and filters from the URL, fetches events from firestore, and filters and display the matching ones 
 
 //these are firebase imports; database; documents; collections; shared cared generated from templateEventCard.js
-import {db} from "./firebaseConfig.js"
 import { db } from "./firebaseConfig.js";
 import { getDoc, getDocs, collection, arrayRemove, arrayUnion, updateDoc, doc } from "firebase/firestore";
 import { createCardHTML } from "./templateEventCard.js";
@@ -27,7 +26,7 @@ const activeFilters = queryParameters.get("filters")?.split(",") || [];
 //gets search-summary element from search-results.html
 const summary = document.getElementById("search-summary");
 //show search result summary
-summary.textContent = queryValue ? `Results for "${queryValue}"` : `Search by keyword(s)`;
+summary.textContent = queryValue ? `Results for "${queryValue}"` : ``;
 
 //for keeping search inputs written in search bar
 const searchInputs = document.querySelectorAll("#keyword-search");
@@ -56,7 +55,7 @@ async function loadSearchResults(user) {
 
     //Filters the full event list down to only the matching results
     let filteredEvents = allEvents.filter((event) => {
-        if (queryValue == 0) {
+        if (queryValue == "") {
             return true;
         } else {
             //checks these three fields for a keyword match
