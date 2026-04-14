@@ -10,11 +10,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 const auth = getAuth();
 //==================================================
 
-  //==================================================
+//==================================================
 //for search functionality
 // URLSearchParams is a built-in browser API for reading URL query strings
 // window.location.search gives the query and filter part of the URL that search.js builds
-//for search functionality
 const queryParameters = new URLSearchParams(window.location.search);
 // "q" is the search keyword from the url, then we normalize it
 const queryValue = queryParameters.get("q")?.toLowerCase().trim() || "";
@@ -36,7 +35,7 @@ searchInputs.forEach((input) => {
 });
 //==================================================
 
-  //==================================================
+//==================================================
   //async function — fetches all events from Firestore, then filters them
 async function loadSearchResults(user) {
     //fetches documents from events collection
@@ -93,6 +92,7 @@ async function loadSearchResults(user) {
     const savedEvents = userDoc.data()?.savedEvents ?? []; //Try to find savedEvents array, if undefined/null use an empty
 
     renderEvents(filteredEvents, savedEvents);
+    //==================================================
 
     //==================================================
     //The save/remove event and update firestore logic and update button visuals.

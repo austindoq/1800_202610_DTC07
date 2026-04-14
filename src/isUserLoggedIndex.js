@@ -12,7 +12,9 @@ function createEventDisplayCheck() {
     }
   });
 }
+//==================================================
 
+//==================================================
 function updateLoginLogoutButton() {
   onAuthStateChanged (auth, (user) => {
     const loginLogoutButton = document.getElementById("login-logout-button")
@@ -34,7 +36,9 @@ function updateLoginLogoutButton() {
     }
   })
 }
+//==================================================
 
+//==================================================
 // hide the get started button if the user is logged in
 function hideGetStartedButton(){
   onAuthStateChanged(auth, (user) => {

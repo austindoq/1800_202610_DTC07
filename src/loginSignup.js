@@ -86,7 +86,9 @@ function initAuthUI() {
       setSubmitDisabled(loginForm, false);
     }
   });
+//==================================================
 
+//==================================================
   // Signup form submit
   signupForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
