@@ -1,6 +1,6 @@
 class SiteFooter extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
+  connectedCallback() {
+    this.innerHTML = `
             <!--START OF FOOTER-->
             <footer class="bg-[#282828] text-white py-8 rounded-[30px] m-3 p-5">
                 <!-- container -->
@@ -50,7 +50,7 @@ class SiteFooter extends HTMLElement {
             </footer>
             <!-- END OF FOOTER -->
         `;
-    }
+  }
 }
 
 customElements.define("site-footer", SiteFooter);
