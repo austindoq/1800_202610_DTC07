@@ -6,7 +6,7 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
         <img class="rounded-t-[45px] w-full max-w-full h-52 object-cover border-1 border-gray-200" src="${event.image || "/images/dynamic-soccer-crowd-cheer-fan-vector-silhouette-background.jpg"}" ></img> 
         <div class="border-1 border-gray-200 flex flex-col flex-1 justify-between">
             <div id="top-event-details" class="flex flex-col gap-1">
-              <div class="font-bold border-r-2 border-gray-600 text-[18px] pr-4 pl-4 break-words flex items-center justify-center">${event.title}</div>
+              <div class="font-bold border-l-2 border-r-2 border-gray-200 text-[18px] pr-4 pl-4 break-words flex items-center justify-center tracking-wide">${event.title}</div>
               <div class="flex justify-between space-y-3 text-[16px] pl-4 pr-4">
                   <div class="text-gray-600 border-r-2 break-all flex justify-center pr-1 items-center w-1/2">${event.location}</div>
                   <div class="flex flex-col w-1/2 items-center">
@@ -21,12 +21,12 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
             
             <div id="restrictions-area-container">${
               event.noAlchohol || // true if "Alcohol Free" was checked on create-event.html
-              event.noGluten ||   // true if "Gluten Free" was checked
-              event.noKids ||     // true if "Kid Free" was checked
-              event.noSmoking ||  // true if "Smoke Free" was checked
-              event.restrictionsTextbox   // truthy if a custom restriction was typed in
-              // If any of the above are truthy, render the full restrictions block:
-                ? `<span class=" pl-4 text-[14px] font-semibold">Restrictions:</span>
+              event.noGluten || // true if "Gluten Free" was checked
+              event.noKids || // true if "Kid Free" was checked
+              event.noSmoking || // true if "Smoke Free" was checked
+              event.restrictionsTextbox // truthy if a custom restriction was typed in
+                ? // If any of the above are truthy, render the full restrictions block:
+                  `<span class=" pl-4 text-[14px] font-semibold">Restrictions:</span>
                 <div id="restrictions-area" class="flex flex-wrap gap-1 text-[16px] font-semibold items-center px-4">
                 ${event.noAlchohol ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl" >No Alcohol</span>` : ""}
                 ${event.noGluten ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">No Gluten</span>` : ""}
@@ -34,8 +34,8 @@ export function createCardHTML(event, isSaved = false, showAttendees = false) {
                 ${event.noSmoking ? ` <span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">No Smoking</span>` : ""}
                 ${event.restrictionsTextbox ? `<span class="bg-[#464646] text-white p-1 px-1.5 rounded-xl">${event.restrictionsTextbox}</span>` : ""}
                 </div>`
-                // If all restriction fields are false/empty, render nothing here
-                : ""
+                : // If all restriction fields are false/empty, render nothing here
+                  ""
             }
             </div>
             ${
