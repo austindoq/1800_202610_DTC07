@@ -4,8 +4,8 @@ import { auth } from "../firebaseConfig";
 
 //==================================================
 class SiteNavbar extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+    connectedCallback() {
+        this.innerHTML = `
             <div class="sticky top-0 z-50 shadow-sm bg-white">
                 <!-- START OF MAIN NAVBAR -->
                 <!-- NAVBAR COLOUR -->
@@ -180,93 +180,103 @@ class SiteNavbar extends HTMLElement {
             </nav>
             <!-- END OF NAVBAR -->
         `;
-    //==================================================
+        //==================================================
 
-    //==================================================
-    onAuthStateChanged(auth, async (user) => {
-      //we run auth check after innerHTML is set so the profile element exists first
-      const profileIcon = this.querySelector("#profile-icon");
-      if (profileIcon) {
-        profileIcon.style.display = user ? "flex" : "none";
-      }
-
-      if (user) {
-        const { getFirestore, doc, getDoc } =
-          await import("firebase/firestore");
-        const db = getFirestore();
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        const nameSpan = this.querySelector("#nav-user-name");
-        if (nameSpan && userDoc.exists()) {
-          nameSpan.textContent = userDoc.data().username;
-        }
-      }
-    });
-
-    //==================================================
-
-    //==================================================
-
-    setTimeout(() => {
-      this.querySelectorAll("#search-filter").forEach((filterButton) => {
-        const dropdown = filterButton.nextElementSibling;
-
-        // Toggle dropdown when Filter button is clicked
-        filterButton.addEventListener("click", (event) => {
-          event.stopPropagation(); // prevent the click from immediately closing via the window listener
-          dropdown.classList.toggle("hidden");
-        });
-
-        dropdown.addEventListener("click", (event) => {
-          event.stopPropagation();
-        });
-
-        const query = new URLSearchParams(window.location.search);
-        const queryValue = query.get("filters")?.split(",") || [];
-
-        queryValue.forEach((filterKey) => {
-          if (filterKey) {
-            const checkbox = dropdown.querySelector(
-              `[data-filter="${filterKey}"]`,
-            );
-            if (checkbox) {
-              checkbox.checked = true;
+        //==================================================
+        onAuthStateChanged(auth, async (user) => {
+            //we run auth check after innerHTML is set so the profile element exists first
+            const profileIcon = this.querySelector("#profile-icon");
+            if (profileIcon) {
+                profileIcon.style.display = user ? "flex" : "none";
             }
-          }
+
+            if (user) {
+                const { getFirestore, doc, getDoc } = await import("firebase/firestore");
+                const db = getFirestore();
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                const nameSpan = this.querySelector("#nav-user-name");
+                if (nameSpan && userDoc.exists()) {
+                    nameSpan.textContent = userDoc.data().username;
+                }
+            }
         });
 
-        // When "Apply" is clicked, build the URL and navigate
-        dropdown
-          .querySelector("#apply-filters")
-          .addEventListener("click", () => {
-            const checkedFilters = [
-              ...dropdown.querySelectorAll(".filter-checkbox:checked"),
-            ].map((cb) => cb.dataset.filter); // map filter from dataset
+        //==================================================
 
-            // Read current search query if one exists
-            const queryParameters = new URLSearchParams(window.location.search);
-            const searchInput = filterButton
-              .closest(".search-container")
-              ?.querySelector("#keyword-search");
-            const queryValue =
-              searchInput?.value.trim() || queryParameters.get("q") || "";
+        //==================================================
 
-            //keep the search query and add filters to URL
-            let url = `/search-results.html?q=${encodeURIComponent(queryValue)}`;
-            if (checkedFilters.length > 0) {
-              url += `&filters=${checkedFilters.join(",")}`;
-            }
-            window.location.href = url;
-          });
-      });
+        setTimeout(() => {
+            this.querySelectorAll("#search-filter").forEach((filterButton) => {
+                const dropdown = filterButton.nextElementSibling;
 
-      // Close dropdown if user clicks anywhere else on the page
-      window.addEventListener("click", () => {
-        this.querySelectorAll("#filter-dropdown").forEach((dropdown) =>
-          dropdown.classList.add("hidden"),
-        );
-      });
-    }, 0);
-  }
+                // Toggle dropdown when Filter button is clicked
+                filterButton.addEventListener("click", (event) => {
+                    event.stopPropagation(); // prevent the click from immediately closing via the window listener
+                    dropdown.classList.toggle("hidden");
+                });
+
+                dropdown.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                });
+
+                const query = new URLSearchParams(window.location.search);
+                const queryValue = query.get("filters")?.split(",") || [];
+
+                queryValue.forEach((filterKey) => {
+                    if (filterKey) {
+                        const checkbox = dropdown.querySelector(`[data-filter="${filterKey}"]`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                    }
+                });
+
+                // builds and navigates to the search URL with keyword + active filters
+                function doSearchWithFilters(searchContainer, dropdown) {
+                    const checkedFilters = [...dropdown.querySelectorAll(".filter-checkbox:checked")].map((cb) => cb.dataset.filter);
+
+                    const queryParameters = new URLSearchParams(window.location.search);
+                    const searchInput = searchContainer?.querySelector("#keyword-search");
+                    const queryValue = searchInput?.value.trim() || queryParameters.get("q") || "";
+
+                    let url = `/search-results.html?q=${encodeURIComponent(queryValue)}`;
+                    if (checkedFilters.length > 0) {
+                        url += `&filters=${checkedFilters.join(",")}`;
+                    }
+                    window.location.href = url;
+                }
+
+                // when "apply" is clicked, build the URL and navigate
+                dropdown.querySelector("#apply-filters").addEventListener("click", () => {
+                    doSearchWithFilters(filterButton.closest(".search-container"), dropdown);
+                });
+
+                // When the search icon button is clicked, also include any active filters
+                const searchContainer = filterButton.closest(".search-container");
+                const searchButton = searchContainer?.querySelector("#search-button");
+                if (searchButton) {
+                    searchButton.addEventListener("click", () => {
+                        doSearchWithFilters(searchContainer, dropdown);
+                    });
+                }
+
+                // when Enter is pressed in the search field, also include any active filters
+                const searchInput = searchContainer?.querySelector("#keyword-search");
+                if (searchInput) {
+                    searchInput.addEventListener("keydown", (e) => {
+                        if (e.key === "Enter") {
+                            doSearchWithFilters(searchContainer, dropdown);
+                        }
+                    });
+                }
+            });
+
+            // close dropdown if user clicks anywhere else on the page
+            window.addEventListener("click", () => {
+                this.querySelectorAll("#filter-dropdown").forEach((dropdown) => dropdown.classList.add("hidden"));
+            });
+        }, 0);
+    }
 }
 
 customElements.define("site-navbar", SiteNavbar);
