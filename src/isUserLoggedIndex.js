@@ -49,7 +49,17 @@ function hideGetStartedButton(){
   )
 }
 
+function eventsSectionDisplayCheck() {
+  onAuthStateChanged(auth, (user) => {
+    const eventsSection = document.getElementById("events-section");
+    if (!user && eventsSection) {
+      eventsSection.style.display = "none";
+    }
+  });
+}
+
 
 createEventDisplayCheck();
 updateLoginLogoutButton();
 hideGetStartedButton();
+eventsSectionDisplayCheck();
